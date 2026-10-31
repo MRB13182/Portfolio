@@ -1,0 +1,226 @@
+export interface ProfileRow {
+  id: string;
+  name: string;
+  first_name?: string;
+  last_name?: string;
+  titles: string[];
+  bio?: string;
+  extended_bio?: string;
+  about?: string;
+  location?: string;
+  email?: string;
+  phone?: string;
+  whatsapp?: string;
+  whatsapp_number?: string;
+  telegram?: string;
+  telegram_username?: string;
+  availability_status?: string;
+  resume_url?: string;
+  resume_file_name?: string;
+  resume_download_enabled?: boolean;
+  resume_badge_text?: string;
+  featured_skill_ids?: string[];
+  years_of_experience?: number;
+  profile_image?: string;
+  cover_image?: string;
+  logo_light?: string;
+  logo_dark?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface ProjectRow {
+  id: string;
+  title: string;
+  category: 'Full Stack' | 'AI & SaaS' | 'Mobile / Web' | 'UI / UX' | string;
+  tagline: string;
+  description: string;
+  image: string;
+  logo?: string;
+  gallery_images?: string[];
+  fallback_gradient?: string;
+  tech_stack: string[];
+  features: string[];
+  architecture?: string[];
+  live_url?: string;
+  github_url?: string;
+  featured?: boolean;
+  status?: 'Live' | 'In Development' | 'Completed' | 'Beta' | string;
+  display_order?: number;
+  sort_order?: number;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface SkillRow {
+  id: string;
+  name: string;
+  category: string;
+  level: number;
+  logo?: string;
+  experience?: string;
+  experience_duration?: string;
+  icon_name?: string;
+  description: string;
+  projects?: string[];
+  projects_using?: string[];
+  proficiency_highlights?: string[];
+  keywords?: string[];
+  accent_color?: string;
+  display_order?: number;
+  sort_order?: number;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface ExperienceRow {
+  id: string;
+  position: string;
+  company: string;
+  company_logo?: string;
+  location: string;
+  duration: string;
+  period?: string;
+  type: 'Full-time' | 'Contract' | 'Freelance' | 'Lead' | string;
+  description: string;
+  achievements: string[];
+  skills: string[];
+  display_order?: number;
+  sort_order?: number;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface EducationRow {
+  id: string;
+  degree: string;
+  field?: string;
+  institution: string;
+  institution_logo?: string;
+  location: string;
+  duration: string;
+  grade?: string;
+  highlights: string[];
+  display_order?: number;
+  sort_order?: number;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface CertificateRow {
+  id: string;
+  title: string;
+  issuer: string;
+  issuer_logo?: string;
+  theme?: string;
+  category?: string;
+  accent?: string;
+  image: string;
+  issue_date?: string;
+  expiry_date?: string;
+  credential_id?: string;
+  credential_url?: string;
+  verification_url?: string;
+  skills?: string[];
+  description?: string;
+  verified?: boolean;
+  display_order?: number;
+  sort_order?: number;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface SocialLinkRow {
+  id: string;
+  name: string;
+  url: string;
+  icon: string;
+  color?: string;
+  action_type?: 'link' | 'email' | 'whatsapp' | 'telegram' | 'modal';
+  enabled?: boolean;
+  display_order?: number;
+  sort_order?: number;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface ContactMessageRow {
+  id: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  status: 'unread' | 'read' | 'archived';
+  created_at?: string;
+}
+
+export interface FooterSettingsRow {
+  id: string;
+  footer_logo?: string;
+  footer_description?: string;
+  copyright_text?: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+  social_links?: { name: string; url: string; icon: string }[];
+  navigation_links?: { label: string; path: string }[];
+  background_image?: string;
+  banner_text?: string;
+  footer_theme?: 'emerald' | 'gold' | 'minimal' | 'luxury' | string;
+  updated_at?: string;
+}
+
+export interface SiteSettingsRow {
+  id: string;
+  site_title: string;
+  website_name?: string;
+  website_logo?: string;
+  dark_logo?: string;
+  light_logo?: string;
+  favicon?: string;
+  hero_banner?: string;
+  meta_title?: string;
+  meta_description?: string;
+  seo_keywords?: string;
+  og_image?: string;
+  primary_color?: string;
+  secondary_color?: string;
+  accent_color?: string;
+  background_color?: string;
+  contact_email?: string;
+  active_theme?: string;
+  show_stats?: boolean;
+  maintenance_mode?: boolean;
+  custom_announcement?: string;
+  visitor_count?: number;
+  footer_text?: string;
+  copyright_text?: string;
+  hero_greeting?: string;
+  hero_cta_text?: string;
+  hero_cta_link?: string;
+  glass_blur?: string;
+  glass_opacity?: string;
+  border_glow?: boolean;
+  updated_at?: string;
+}
+
+export interface TestimonialRow {
+  id: string;
+  name: string;
+  role: string;
+  company?: string;
+  avatar?: string;
+  content: string;
+  rating?: number;
+  featured?: boolean;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface ActivityLogRow {
+  id: string;
+  action: string;
+  entity_type: string;
+  details?: string;
+  created_at: string;
+}
