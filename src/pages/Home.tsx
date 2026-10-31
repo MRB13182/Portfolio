@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { portfolioConfig } from '../config/portfolio';
 import { Hero } from '../components/sections/Hero';
-import { About } from '../components/sections/About';
 import { SafeImage } from '../components/common/SafeImage';
 import { Code2, Palette, Fingerprint, ArrowUpRight, ArrowRight, Award } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -113,8 +112,6 @@ export const Home: React.FC = () => {
           </div>
         </div>
       </section>
-
-      <About />
     </div>
   );
 };
