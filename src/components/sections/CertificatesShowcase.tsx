@@ -6,10 +6,7 @@ import { CertificateModal } from '../modals/CertificateModal';
 import { IssuerLogo } from '../common/IssuerLogo';
 import { SafeImage } from '../common/SafeImage';
 import { ScrollReveal } from '../common/ScrollReveal';
-import { 
-  Award, 
-  Eye
-} from 'lucide-react';
+import { Award, Eye } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface CertificatesShowcaseProps {
@@ -74,7 +71,7 @@ export const CertificatesShowcase: React.FC<CertificatesShowcaseProps> = ({
         </ScrollReveal>
 
         {/* Clean Glass Grid of Certificates (Tier B Standard Glass) */}
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 gap-6 sm:gap-7">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
           {certificates.map((cert, index) => (
             <motion.div
               key={cert.id || index}
@@ -97,14 +94,14 @@ export const CertificatesShowcase: React.FC<CertificatesShowcaseProps> = ({
               <div>
                 {/* Certificate Thumbnail with Preview Trigger */}
                 <div 
-                  className="relative aspect-[16/10] overflow-hidden cursor-pointer bg-slate-950/40"
+                  className="relative aspect-[4/3] overflow-hidden cursor-pointer bg-slate-950/40"
                   onClick={() => handleCardClick(cert)}
                 >
                   <SafeImage
                     src={cert.image}
                     alt={cert.title}
                     fallbackType="certificate"
-                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-103"
+                    className="w-full h-full object-contain p-3 sm:p-4 transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent opacity-70 group-hover:opacity-45 transition-opacity" />
 
