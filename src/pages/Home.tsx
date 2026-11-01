@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { portfolioConfig } from '../config/portfolio';
 import { Hero } from '../components/sections/Hero';
-import { About } from '../components/sections/About';
 import { SafeImage } from '../components/common/SafeImage';
 import { Code2, Palette, Fingerprint, ArrowUpRight, ArrowRight, Award } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -97,24 +96,27 @@ export const Home: React.FC = () => {
             </div>
             <Link to="/certificates" className={`mb-1 inline-flex items-center gap-1 text-xs font-semibold sm:text-sm ${isDark ? 'text-cyan-300' : 'text-cyan-700'}`}>View all <ArrowUpRight className="h-4 w-4" /></Link>
           </div>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
             {portfolioConfig.certificates.slice(0, 3).map((certificate, index) => (
-              <motion.article key={certificate.id} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * .06 }} className={`overflow-hidden rounded-3xl border backdrop-blur-2xl ${glass}`}>
-                <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-blue-500/10 via-cyan-400/5 to-violet-500/10 p-2.5 sm:p-4">
-                  <SafeImage src={certificate.image} alt={certificate.title} fallbackType="project" className="h-full w-full rounded-xl object-contain" />
-                </div>
-                <div className="p-3 sm:p-4">
-                  <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-400"><Award className="h-4 w-4" /></div>
-                  <h3 className={`line-clamp-2 text-xs font-bold leading-5 sm:text-sm ${heading}`}>{certificate.title}</h3>
-                  <p className={`mt-1 line-clamp-1 text-[10px] sm:text-xs ${muted}`}>{certificate.issuer}</p>
-                </div>
+              <motion.article key={certificate.id} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * .06 }} className={`group overflow-hidden rounded-3xl border backdrop-blur-2xl transition duration-200 hover:-translate-y-1 ${glass}`}>
+                <Link to="/certificates" className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-3xl">
+                  <div className="flex aspect-[16/10] items-center justify-center overflow-hidden bg-slate-950/60 p-2.5 sm:p-3">
+                    <SafeImage src={certificate.image} alt={certificate.title} fallbackType="certificate" className="h-full w-full rounded-xl object-contain transition-transform duration-300 group-hover:scale-[1.02]" />
+                  </div>
+                  <div className="p-3 sm:p-4">
+                    <div className="mb-2 flex items-center justify-between">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-lg border border-cyan-400/20 bg-cyan-400/10 text-cyan-400"><Award className="h-3.5 w-3.5" /></div>
+                      <span className={`text-[10px] font-mono uppercase tracking-wider ${isDark ? 'text-cyan-400' : 'text-cyan-600'}`}>{certificate.issuer}</span>
+                    </div>
+                    <h3 className={`line-clamp-2 text-xs font-bold leading-5 sm:text-sm transition-colors group-hover:text-cyan-400 ${heading}`}>{certificate.title}</h3>
+                    <p className={`mt-1 line-clamp-1 text-[10px] sm:text-xs ${muted}`}>{certificate.category}</p>
+                  </div>
+                </Link>
               </motion.article>
             ))}
           </div>
         </div>
       </section>
-
-      <About />
     </div>
   );
 };

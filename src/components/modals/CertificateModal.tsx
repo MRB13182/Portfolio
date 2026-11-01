@@ -24,6 +24,17 @@ interface CertificateModalProps {
   onSelectCertificate?: (cert: Certificate) => void;
 }
 
+const isLegitimateUrl = (url?: string): boolean => {
+  if (!url) return false;
+  const clean = url.trim();
+  return (
+    (clean.startsWith('http://') || clean.startsWith('https://')) &&
+    clean !== 'https://' &&
+    clean !== 'http://' &&
+    !clean.includes('example.com')
+  );
+};
+
 export const CertificateModal: React.FC<CertificateModalProps> = ({
   certificate,
   allCertificates = [],
@@ -465,33 +476,51 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
             isDark ? 'border-white/[0.08] bg-[#0E1420]/80' : 'border-slate-200 bg-white'
           }`}>
             <div className="flex flex-wrap items-center gap-2">
-              <span className={`font-mono px-2 py-0.5 rounded-lg border ${
-                isDark ? 'bg-white/[0.04] text-[#22D3EE] border-white/10' : 'bg-cyan-50 text-[#0891B2] border-cyan-200 font-bold'
-              }`}>
-                {certificate.credentialId || 'AUTHENTIC-ID'}
-              </span>
-              <span className={isDark ? 'text-zinc-400' : 'text-slate-600'}>
+              {certificate.credentialId && (
+                <span className={`font-mono px-2 py-0.5 rounded-lg border text-[11px] font-semibold ${
+                  isDark ? 'bg-white/[0.04] text-[#22D3EE] border-white/10' : 'bg-cyan-50 text-[#0891B2] border-cyan-200'
+                }`}>
+                  {certificate.credentialId}
+                </span>
+              )}
+              <span className={`font-medium ${isDark ? 'text-zinc-300' : 'text-slate-700'}`}>
                 {certificate.category || 'Professional Certification'}
               </span>
               {certificate.issueDate && (
-                <span className={isDark ? 'text-zinc-500' : 'text-slate-400'}>• {certificate.issueDate}</span>
+                <span className={isDark ? 'text-zinc-400' : 'text-slate-500'}>• {certificate.issueDate}</span>
               )}
             </div>
 
-            {certificate.skills && certificate.skills.length > 0 && (
-              <div className="flex flex-wrap gap-1.5">
-                {certificate.skills.slice(0, 3).map((skill, sIdx) => (
-                  <span
-                    key={sIdx}
-                    className={`text-[10px] font-semibold px-2.5 py-1 rounded-xl border ${
-                      isDark ? 'bg-zinc-900 border-zinc-800 text-zinc-300' : 'bg-slate-100 border-slate-200 text-slate-700'
-                    }`}
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            )}
+            <div className="flex items-center gap-2">
+              {/* Genuine Verification URL Button */}
+              {isLegitimateUrl(certificate.verificationUrl || certificate.credentialUrl) && (
+                <a
+                  href={certificate.verificationUrl || certificate.credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Verify credential for ${certificate.title} on official issuer portal`}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#22D3EE] to-[#8B5CF6] text-black font-bold text-xs shadow-sm hover:opacity-95 transition-opacity"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Verify Credential</span>
+                </a>
+              )}
+
+              {certificate.skills && certificate.skills.length > 0 && (
+                <div className="hidden md:flex flex-wrap gap-1.5">
+                  {certificate.skills.slice(0, 3).map((skill, sIdx) => (
+                    <span
+                      key={sIdx}
+                      className={`text-[10px] font-semibold px-2.5 py-1 rounded-xl border ${
+                        isDark ? 'bg-zinc-900 border-zinc-800 text-zinc-300' : 'bg-slate-100 border-slate-200 text-slate-700'
+                      }`}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </motion.div>
       </div>

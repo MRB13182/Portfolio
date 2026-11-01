@@ -1,8 +1,8 @@
 /**
  * 07 - CERTIFICATES (SUPER ADMIN)
  * 
- * Edit this file to add, modify, or update verified professional credentials,
- * credential IDs, issuers, skills acquired, and verification links.
+ * Verified professional credentials, issuers, skills acquired, and accurate descriptions.
+ * Placeholders and unverified credential IDs are removed in compliance with portfolio integrity rules.
  */
 
 import { Certificate } from '../../../types';
@@ -14,11 +14,9 @@ export const certificatesData: Certificate[] = [
     title: 'Google AI Professional Certificate',
     issuer: 'Google',
     category: 'AI & Machine Learning',
-    issueDate: 'Verified Credential',
-    credentialId: 'GOOG-AI-948102',
     accent: '#4285F4',
-    skills: ['Generative AI', 'Gemini API', 'Machine Learning', 'Prompt Engineering', 'AI Architecture'],
-    description: 'Professional credential validating foundational and advanced expertise in applied artificial intelligence, generative AI models, neural architectures, and intelligent application engineering.',
+    skills: ['Generative AI', 'Machine Learning', 'Prompt Engineering', 'AI Architecture'],
+    description: 'Professional credential validating foundational and applied artificial intelligence principles, generative AI models, prompt engineering, and intelligent application design.',
     verified: true,
   },
   {
@@ -27,11 +25,9 @@ export const certificatesData: Certificate[] = [
     title: 'Google UX Design Professional Certificate',
     issuer: 'Google',
     category: 'UI/UX Design',
-    issueDate: 'Verified Credential',
-    credentialId: 'GOOG-UX-823190',
     accent: '#34A853',
-    skills: ['Figma Design Systems', 'User Research', 'Wireframing', 'Interactive Prototyping', 'Accessibility (WCAG)'],
-    description: 'Comprehensive human-centered design certification covering rigorous user research, accessible interface architecture, wireframing, high-fidelity interactive prototyping, and design system governance.',
+    skills: ['User Research', 'Wireframing', 'Figma Prototyping', 'Design Systems', 'Accessibility (WCAG)'],
+    description: 'Comprehensive design certification covering the UX design lifecycle, empathetic user research, wireframing, high-fidelity prototyping in Figma, and accessible interface systems.',
     verified: true,
   },
   {
@@ -40,11 +36,9 @@ export const certificatesData: Certificate[] = [
     title: 'IBM Full Stack Software Developer Professional Certificate',
     issuer: 'IBM',
     category: 'Full Stack Development',
-    issueDate: 'Verified Credential',
-    credentialId: 'IBM-FSD-661904',
     accent: '#0F62FE',
-    skills: ['Cloud Native Architecture', 'Node.js & Express', 'React Frontend', 'Microservices', 'Docker & CI/CD', 'REST APIs'],
-    description: 'Enterprise full stack certification validating competencies in cloud-native software engineering, scalable backend microservices, containerization, and modern TypeScript workflows.',
+    skills: ['React', 'Node.js', 'Express', 'Cloud-Native Architecture', 'Docker & Containers', 'RESTful APIs'],
+    description: 'Full stack engineering credential certifying competencies in building modern frontends, scalable server-side microservices, containerized deployment, and RESTful cloud services.',
     verified: true,
   },
   {
@@ -53,11 +47,9 @@ export const certificatesData: Certificate[] = [
     title: 'Meta Front-End Developer Professional Certificate',
     issuer: 'Meta',
     category: 'Frontend Engineering',
-    issueDate: 'Verified Credential',
-    credentialId: 'META-FED-339182',
     accent: '#0081FB',
-    skills: ['React & Next.js', 'Advanced JavaScript (ES6+)', 'State Management', 'UI/UX Engineering', 'Core Web Vitals'],
-    description: 'Advanced frontend accreditation validating mastery in modern JavaScript, React application architecture, responsive design, testing methodologies, and sub-second performance optimization.',
+    skills: ['React', 'Advanced JavaScript (ES6+)', 'State Management', 'UI/UX Engineering', 'Responsive Design'],
+    description: 'Professional accreditation from Meta validating mastery of frontend web engineering, React component architecture, modern ES6+ JavaScript, and responsive design systems.',
     verified: true,
   },
   {
@@ -66,11 +58,9 @@ export const certificatesData: Certificate[] = [
     title: 'HubSpot SEO Certification',
     issuer: 'HubSpot',
     category: 'SEO & Search Strategy',
-    issueDate: 'Verified Credential',
-    credentialId: 'HUB-SEO-581932',
     accent: '#FF7A59',
-    skills: ['Technical SEO', 'Content Strategy', 'Keyword Modeling', 'On-Page Optimization', 'Organic Growth'],
-    description: 'Industry-standard accreditation covering technical search engine optimization, content architecture, keyword clustering, link acquisition, and Google algorithm optimization.',
+    skills: ['Technical SEO', 'Keyword Research', 'Content Strategy', 'On-Page Optimization', 'Search Analytics'],
+    description: 'Accreditation from HubSpot Academy evaluating knowledge of search engine optimization fundamentals, organic content planning, technical crawling efficiency, and performance metrics.',
     verified: true,
   },
   {
@@ -79,11 +69,9 @@ export const certificatesData: Certificate[] = [
     title: 'Semrush SEO Certification',
     issuer: 'Semrush',
     category: 'Search Analytics & Audit',
-    issueDate: 'Verified Credential',
-    credentialId: 'SEM-SEO-771204',
     accent: '#FF642D',
     skills: ['Technical Site Audit', 'Competitive Intelligence', 'SERP Tracking', 'Backlink Audit', 'Search Telemetry'],
-    description: 'Specialized certification in deep technical website auditing, competitive keyword intelligence, backlink profile analysis, and SERP visibility optimization.',
+    description: 'Certification in advanced search analytics, technical site auditing, competitive keyword research, backlink analysis, and search engine ranking factors.',
     verified: true,
   },
 ];
