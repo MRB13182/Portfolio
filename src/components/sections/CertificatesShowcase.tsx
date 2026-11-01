@@ -133,7 +133,7 @@ export const CertificatesShowcase: React.FC<CertificatesShowcaseProps> = ({
                 <div>
                   {/* Certificate Image Frame with Full Visibility */}
                   <div 
-                    className="relative aspect-[16/11] overflow-hidden cursor-pointer bg-[#0A0E17] p-2.5 sm:p-3 flex items-center justify-center"
+                    className="relative aspect-[16/11] overflow-hidden cursor-pointer bg-slate-100 p-2.5 sm:p-3 flex items-center justify-center"
                     onClick={() => handleCardClick(cert)}
                     role="button"
                     tabIndex={0}
@@ -149,7 +149,7 @@ export const CertificatesShowcase: React.FC<CertificatesShowcaseProps> = ({
                       src={cert.image}
                       alt={cert.title}
                       fallbackType="certificate"
-                      className="w-full h-full object-contain rounded-xl transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                      className="w-full h-full object-contain rounded-xl bg-white transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                     />
 
                     {/* Gradient Depth Overlay on Hover */}
