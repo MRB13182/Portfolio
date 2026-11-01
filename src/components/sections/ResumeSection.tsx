@@ -100,7 +100,7 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenResumeDownlo
                 <p className={`text-xs sm:text-sm leading-relaxed mb-6 ${
                   isDark ? 'text-[#A1AAB8]' : 'text-slate-600'
                 }`}>
-                  Structured for technical recruiters, engineering directors, and automated ATS screening engines. Details 5+ years of production experience scaling Next.js, React, Node.js, and cloud backend microservices.
+                  A clear, recruiter-friendly overview of the skills, projects, education and credentials listed in this portfolio.
                 </p>
 
                 {/* Key Resume Highlights */}
@@ -111,10 +111,10 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenResumeDownlo
                     <Briefcase className="w-4 h-4 text-[#22D3EE] shrink-0 mt-0.5" />
                     <div>
                       <h4 className={`text-xs font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                        Experience: 5+ Years Delivering Enterprise Web Products
+                        Projects & Practical Work
                       </h4>
                       <p className={`text-[11px] leading-relaxed mt-0.5 ${isDark ? 'text-[#A1AAB8]' : 'text-slate-500'}`}>
-                        Shipped 50+ modern client applications, high-concurrency microservices, and design systems.
+                        Selected projects and technical work are presented in the A4 resume.
                       </p>
                     </div>
                   </div>
@@ -125,10 +125,10 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenResumeDownlo
                     <GraduationCap className="w-4 h-4 text-[#8B5CF6] shrink-0 mt-0.5" />
                     <div>
                       <h4 className={`text-xs font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                        Education: Bachelor of Science in Computer Science &amp; Engineering
+                        Education & Learning
                       </h4>
                       <p className={`text-[11px] leading-relaxed mt-0.5 ${isDark ? 'text-[#A1AAB8]' : 'text-slate-500'}`}>
-                        Focus on Distributed Algorithms, Database Systems, and Object-Oriented Architecture.
+                        Academic details are taken from the portfolio education section.
                       </p>
                     </div>
                   </div>
@@ -139,10 +139,10 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenResumeDownlo
                     <ShieldCheck className="w-4 h-4 text-[#22D3EE] shrink-0 mt-0.5" />
                     <div>
                       <h4 className={`text-xs font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                        Industry Certifications: Google, IBM, Meta, HubSpot Verified
+                        Professional Certificates
                       </h4>
                       <p className={`text-[11px] leading-relaxed mt-0.5 ${isDark ? 'text-[#A1AAB8]' : 'text-slate-500'}`}>
-                        Continuous professional accreditation in cloud computing, modern frontend, and security.
+                        Certificates listed in the portfolio are included in the resume.
                       </p>
                     </div>
                   </div>
@@ -219,7 +219,7 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenResumeDownlo
                     Executive Profile
                   </div>
                   <p className={isDark ? 'text-[#A1AAB8]' : 'text-slate-600'}>
-                    Full-Stack Engineer with specialization in Next.js 15, TypeScript, Node.js, and cloud systems...
+                    {portfolioConfig.personal.bio}
                   </p>
                 </div>
 
@@ -230,7 +230,7 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenResumeDownlo
                     Core Technologies
                   </div>
                   <div className="flex flex-wrap gap-1">
-                    {['React 19', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind', 'PostgreSQL'].map((t) => (
+                    {portfolioConfig.skills.slice(0, 6).map((skill) => skill.name).map((t) => (
                       <span key={t} className={`px-2 py-0.5 rounded text-[9px] font-mono ${
                         isDark ? 'bg-white/[0.04] text-slate-300 border border-white/5' : 'bg-slate-100 text-slate-700 border border-slate-200'
                       }`}>
@@ -248,11 +248,11 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenResumeDownlo
                   </div>
                   <div className={`p-2.5 rounded-xl border ${isDark ? 'bg-white/[0.03] border-white/5' : 'bg-slate-50 border-slate-200'}`}>
                     <div className="flex items-center justify-between font-semibold text-[10px]">
-                      <span>Senior Full-Stack Engineer</span>
-                      <span className="font-mono text-slate-400 text-[9px]">2023 - Present</span>
+                      <span>{portfolioConfig.experience[0]?.position || 'Selected portfolio work'}</span>
+                      <span className="font-mono text-slate-400 text-[9px]">{portfolioConfig.experience[0]?.duration || ''}</span>
                     </div>
                     <p className={`text-[10px] mt-0.5 ${isDark ? 'text-[#A1AAB8]' : 'text-slate-500'}`}>
-                      Architected enterprise AI web platforms and reduced latency by 48%.
+                      {portfolioConfig.experience[0]?.description || portfolioConfig.personal.extendedBio}
                     </p>
                   </div>
                 </div>
