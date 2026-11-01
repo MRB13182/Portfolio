@@ -400,7 +400,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
 
           {/* Center Certificate Stage Area */}
           <div 
-            className="relative flex-1 min-h-[320px] sm:min-h-[460px] md:min-h-[520px] max-h-[70vh] overflow-hidden flex items-center justify-center bg-black/90 cursor-grab active:cursor-grabbing p-4 sm:p-6"
+            className="relative flex-1 min-h-[320px] sm:min-h-[460px] md:min-h-[520px] max-h-[70vh] overflow-hidden flex items-center justify-center bg-slate-100 cursor-grab active:cursor-grabbing p-4 sm:p-6"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
@@ -410,7 +410,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
           >
             {/* Ambient Backlight */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-3/4 h-3/4 bg-[#22D3EE]/10 blur-3xl rounded-full" />
+              <div className="w-3/4 h-3/4 bg-cyan-200/40 blur-3xl rounded-full" />
             </div>
 
             {/* Navigation Left Arrow */}
@@ -459,7 +459,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
                   alt={`${certificate.title} - ${certificate.issuer} Accreditation`}
                   referrerPolicy="no-referrer"
                   loading="eager"
-                  className="max-w-full max-h-[62vh] object-contain rounded-xl shadow-2xl border border-white/10"
+                  className="max-w-full max-h-[62vh] object-contain rounded-xl bg-white shadow-xl border border-slate-200"
                   onError={handleModalImgError}
                 />
               ) : null}
