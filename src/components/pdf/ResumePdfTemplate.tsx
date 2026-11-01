@@ -107,9 +107,8 @@ export const ResumePdfTemplate: React.FC<ResumePdfTemplateProps> = ({
               style={{ color: headerTitleColor }}
               className="text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1.5"
             >
-              <span>{personal.titles[0]} &amp; {personal.titles[1]}</span>
-              <span className="opacity-60">•</span>
-              <span>5+ Years Experience</span>
+              <span>{personal.titles.slice(0, 2).join(' • ')}</span>
+              {personal.yearsOfExperience > 0 && <><span className="opacity-60">•</span><span>{personal.yearsOfExperience}+ Years Experience</span></>}
             </div>
 
             <p 
@@ -241,8 +240,8 @@ export const ResumePdfTemplate: React.FC<ResumePdfTemplateProps> = ({
                       <span style={{ color: bodyText }} className="font-bold text-[9.5px] truncate">{proj.title}</span>
                       <span 
                         style={{ 
-                          backgroundColor: isDark ? 'rgba(124, 58, 237, 0.12)' : 'rgba(8, 145, 178, 0.12)',
-                          color: isDark ? '#7C3AED' : '#0891B2'
+                          backgroundColor: 'rgba(91, 53, 181, 0.10)',
+                          color: '#5B35B5'
                         }}
                         className="text-[7.5px] font-bold uppercase px-1.5 py-0.2 rounded"
                       >
