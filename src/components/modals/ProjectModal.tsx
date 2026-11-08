@@ -52,7 +52,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className={`fixed inset-0 backdrop-blur-md transition-opacity cursor-pointer ${
+          className={`fixed inset-0 backdrop-blur-none sm:backdrop-blur-md transition-opacity cursor-pointer transform-gpu ${
             isDark ? 'bg-black/75' : 'bg-black/40'
           }`}
         />
@@ -64,7 +64,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ type: 'spring', damping: 26, stiffness: 300 }}
           id="project-modal-container"
-          className={`relative w-full max-w-4xl max-h-[90vh] rounded-2xl backdrop-blur-2xl border shadow-2xl z-10 overflow-hidden flex flex-col ${
+          className={`relative w-full max-w-4xl max-h-[90vh] rounded-2xl glass-accelerated backdrop-blur-xl sm:backdrop-blur-2xl border shadow-2xl z-10 overflow-hidden flex flex-col ${
             isDark
               ? 'bg-[#111722]/95 border-white/10 text-[#F8FAFC] shadow-[0_16px_50px_rgba(0,0,0,0.8)]'
               : 'bg-white/95 border-slate-200 shadow-2xl text-slate-800'

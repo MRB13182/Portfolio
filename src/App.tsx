@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
@@ -6,15 +6,16 @@ import { DataProvider } from './context/DataContext';
 import { ToastProvider } from './context/ToastContext';
 import { LuxuryBackground } from './components/common/LuxuryBackground';
 import { ScrollToTop } from './components/common/ScrollToTop';
+import { ScrollToTopButton } from './components/common/ScrollToTopButton';
 import { ScrollProgressBar } from './components/common/ScrollProgressBar';
 import { PageTransition } from './components/common/PageTransition';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { Home } from './pages/Home';
-import { About } from './components/sections/About';
+import { AboutPage } from './pages/AboutPage';
 import { SkillsPage } from './pages/SkillsPage';
 import { ProjectsPage } from './pages/ProjectsPage';
-import { CertificatesPage } from './pages/CertificatesPage';
+import { ExperiencePage } from './pages/ExperiencePage';
 import { ContactPage } from './pages/ContactPage';
 import { ProtectedRoute } from './components/admin/ProtectedRoute';
 import { AdminLayout } from './components/admin/AdminLayout';
@@ -39,37 +40,13 @@ import { AdminMessagesPage } from './pages/admin/AdminMessagesPage';
 import { AdminFooterPage } from './pages/admin/AdminFooterPage';
 import { AdminSettingsPage } from './pages/admin/AdminSettingsPage';
 import { AdminLoginPage } from './pages/admin/AdminLoginPage';
-import { DownloadCustomizationModal } from './components/modals/DownloadCustomizationModal';
-import { PdfDownloadType } from './types';
 import { AnimatePresence } from 'motion/react';
 
 function AppContent() {
-  const { isDark } = useTheme();
+  const { isNeon } = useTheme();
   const location = useLocation();
   const isAdminLogin = location.pathname === '/admin/login';
   const isAdminDashboard = location.pathname.startsWith('/admin') && !isAdminLogin;
-
-  const [pdfDownloadModal, setPdfDownloadModal] = useState<{
-    isOpen: boolean;
-    type: PdfDownloadType;
-  }>({
-    isOpen: false,
-    type: 'resume',
-  });
-
-  const handleOpenPdfDownload = (type: PdfDownloadType) => {
-    setPdfDownloadModal({
-      isOpen: true,
-      type,
-    });
-  };
-
-  const handleClosePdfDownload = () => {
-    setPdfDownloadModal(prev => ({
-      ...prev,
-      isOpen: false,
-    }));
-  };
 
   // Dedicated Admin Login Page
   if (isAdminLogin) {
@@ -111,18 +88,21 @@ function AppContent() {
 
   return (
     <div className={`min-h-screen relative font-sans transition-colors duration-300 flex flex-col justify-between ${
-      isDark 
-        ? 'bg-[#080B12] text-[#F8FAFC] selection:bg-[#8B5CF6]/30' 
-        : 'bg-[#F8FAFC] text-[#0F172A] selection:bg-[#22D3EE]/25'
+      isNeon 
+        ? 'bg-[#F7F8F5] text-[#10110F] selection:bg-[#B7F32B]/35' 
+        : 'bg-[#F7F7FB] text-[#171725] selection:bg-[#A58AF2]/25'
     }`}>
       {/* Ambient Animated Glows */}
       <LuxuryBackground />
 
-      {/* Bottom Glass Navigation Dock */}
+      {/* Top Floating Glass Navigation Bar (Exact Reference) */}
       <Navbar />
 
+      {/* Floating Scroll To Top Button (Threshold 300px) */}
+      <ScrollToTopButton />
+
       {/* Dynamic Route View Transitions */}
-      <main className="relative z-10 flex-grow pt-6 pb-24 sm:pt-8 sm:pb-28">
+      <main className="relative z-10 flex-grow pt-0 pb-8">
         <AnimatePresence mode="wait">
           <Routes location={location}>
             <Route
@@ -145,7 +125,7 @@ function AppContent() {
               path="/about"
               element={
                 <PageTransition key="about-page">
-                  <About />
+                  <AboutPage />
                 </PageTransition>
               }
             />
@@ -166,12 +146,10 @@ function AppContent() {
               }
             />
             <Route
-              path="/certificates"
+              path="/experience"
               element={
-                <PageTransition key="certificates-page">
-                  <CertificatesPage 
-                    onOpenResumeDownload={() => handleOpenPdfDownload('resume')} 
-                  />
+                <PageTransition key="experience-page">
+                  <ExperiencePage />
                 </PageTransition>
               }
             />
@@ -183,22 +161,17 @@ function AppContent() {
                 </PageTransition>
               }
             />
-            {/* Redirect old routes */}
-            <Route path="/experience" element={<Navigate to="/certificates" replace />} />
+            
+            {/* Strictly remove Resume & Certificates: Redirect to home */}
+            <Route path="/certificates" element={<Navigate to="/" replace />} />
+            <Route path="/resume" element={<Navigate to="/" replace />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </AnimatePresence>
       </main>
 
-      {/* Minimal Glass Footer displaying "© 2026 MR Portfolio" from 10-footer-cms */}
+      {/* Minimal Glass Footer */}
       <Footer />
-
-      {/* Download Customization Modal (Resume & Certificates) */}
-      <DownloadCustomizationModal
-        isOpen={pdfDownloadModal.isOpen}
-        type={pdfDownloadModal.type}
-        onClose={handleClosePdfDownload}
-      />
     </div>
   );
 }

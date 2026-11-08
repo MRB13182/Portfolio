@@ -124,7 +124,7 @@ export const CertificatesShowcase: React.FC<CertificatesShowcaseProps> = ({
                 }}
                 whileHover={{ y: -5 }}
                 id={`cert-card-${cert.id}`}
-                className={`rounded-3xl border transition-all duration-300 flex flex-col justify-between overflow-hidden group ${
+                className={`rounded-3xl border transition-all duration-300 flex flex-col justify-between overflow-hidden group glass-accelerated ${
                   isDark
                     ? 'bg-[#111722]/80 border-white/[0.08] hover:border-[#22D3EE]/40 shadow-[0_12px_32px_-12px_rgba(0,0,0,0.65)] hover:shadow-[0_16px_40px_-10px_rgba(34,211,238,0.12)]'
                     : 'bg-white/90 border-slate-200 hover:border-[#0891B2]/50 shadow-[0_8px_24px_-8px_rgba(15,23,42,0.06)] hover:shadow-[0_16px_36px_-10px_rgba(8,145,178,0.12)]'

@@ -17,7 +17,8 @@ import {
   Moon, 
   Loader2, 
   ZoomIn, 
-  ZoomOut
+  ZoomOut,
+  Sparkles
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
@@ -314,6 +315,20 @@ export const DownloadCustomizationModal: React.FC<DownloadCustomizationModalProp
                   <Printer className="w-4 h-4" />
                   <span className="hidden sm:inline">Print</span>
                 </button>
+
+                {isResume && (
+                  <a
+                    href="/resume"
+                    className={`px-3.5 py-2.5 rounded-xl text-xs font-semibold border flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                      isDark
+                        ? 'bg-violet-500/10 border-violet-500/30 text-violet-300 hover:bg-violet-500/20'
+                        : 'bg-violet-50 border-violet-200 text-violet-700 hover:bg-violet-100'
+                    }`}
+                  >
+                    <Sparkles className="w-4 h-4 text-violet-400" />
+                    <span className="hidden sm:inline">Studio</span>
+                  </a>
+                )}
               </div>
 
               {/* Primary Download Button */}

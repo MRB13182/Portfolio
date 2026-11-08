@@ -1,73 +1,86 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   :root {
-    --theme-mode: 'dark';
-    /* Proposed Dark Design System Palette */
-    --bg-primary: #080B12;
-    --bg-secondary: #0E1420;
-    --surface-primary: #111722;
-    --surface-glass: rgba(255, 255, 255, 0.05);
-    --primary: #22D3EE;
-    --primary-hover: #06B6D4;
-    --primary-dark: #0891B2;
-    --secondary: #8B5CF6;
-    --secondary-hover: #7C3AED;
-    --accent: #22D3EE;
-    --card: rgba(17, 23, 34, 0.72);
-    --card-border: rgba(255, 255, 255, 0.10);
-    --text-primary: #F8FAFC;
-    --text-secondary: #A1AAB8;
-    --text: #F8FAFC;
-    --text-heading: #FFFFFF;
-    --muted: #A1AAB8;
-    --border-subtle: rgba(255, 255, 255, 0.10);
-    --border: rgba(255, 255, 255, 0.10);
-    --glow: rgba(34, 211, 238, 0.15);
-    --glow-secondary: rgba(139, 92, 246, 0.15);
-    --highlight: rgba(34, 211, 238, 0.10);
+    --theme-mode: 'light';
+    --bg-primary: #F7F7FB;
+    --bg-secondary: #FFFFFF;
+    --surface-primary: #FFFFFF;
+    --surface-glass: rgba(255, 255, 255, 0.65);
+    --primary: #A58AF2;
+    --primary-hover: #906FE8;
+    --primary-dark: #7C3AED;
+    --secondary: #C4B4FA;
+    --secondary-hover: #A58AF2;
+    --accent: #B9D5FF;
+    --card: rgba(255, 255, 255, 0.65);
+    --card-border: rgba(255, 255, 255, 0.85);
+    --text-primary: #171725;
+    --text-secondary: #777787;
+    --text: #171725;
+    --text-heading: #171725;
+    --muted: #777787;
+    --border-subtle: rgba(255, 255, 255, 0.85);
+    --border: rgba(255, 255, 255, 0.85);
+    --glow: rgba(165, 138, 242, 0.18);
+    --glow-secondary: rgba(185, 213, 255, 0.22);
+    --highlight: rgba(165, 138, 242, 0.12);
+
+    /* Performance & Blur Tuning Tokens (Desktop Baseline) */
+    --glass-blur-nav: 20px;
+    --glass-blur-modal: 16px;
+    --glass-blur-tier-a: 16px;
+    --glass-blur-tier-b: 12px;
+    --glass-blur-subtle: 8px;
+    --glass-opacity-card-dark: 0.72;
+    --glass-opacity-card-light: 0.75;
+    --glass-opacity-panel-dark: 0.82;
+    --glass-opacity-panel-light: 0.85;
+    --glass-opacity-nav-dark: 0.92;
+    --glass-opacity-nav-light: 0.85;
   }
 
   .light {
     --theme-mode: 'light';
-    --bg-primary: #F8FAFC;
-    --bg-secondary: #F1F5F9;
+    --bg-primary: #F7F7FB;
+    --bg-secondary: #FFFFFF;
     --surface-primary: #FFFFFF;
-    --surface-glass: rgba(255, 255, 255, 0.75);
-    --primary: #0891B2;
-    --primary-hover: #0E7490;
-    --primary-dark: #155E75;
-    --secondary: #7C3AED;
-    --secondary-hover: #6D28D9;
-    --accent: #0891B2;
-    --card: rgba(255, 255, 255, 0.85);
-    --card-border: rgba(15, 23, 42, 0.08);
-    --text-primary: #0F172A;
-    --text-secondary: #64748B;
-    --text: #0F172A;
-    --text-heading: #0F172A;
-    --muted: #64748B;
-    --border-subtle: rgba(15, 23, 42, 0.08);
-    --border: rgba(15, 23, 42, 0.08);
-    --glow: rgba(8, 145, 178, 0.10);
-    --glow-secondary: rgba(124, 58, 237, 0.10);
-    --highlight: rgba(8, 145, 178, 0.08);
+    --surface-glass: rgba(255, 255, 255, 0.65);
+    --primary: #A58AF2;
+    --primary-hover: #906FE8;
+    --primary-dark: #7C3AED;
+    --secondary: #C4B4FA;
+    --secondary-hover: #A58AF2;
+    --accent: #B9D5FF;
+    --card: rgba(255, 255, 255, 0.65);
+    --card-border: rgba(255, 255, 255, 0.85);
+    --text-primary: #171725;
+    --text-secondary: #777787;
+    --text: #171725;
+    --text-heading: #171725;
+    --muted: #777787;
+    --border-subtle: rgba(255, 255, 255, 0.85);
+    --border: rgba(255, 255, 255, 0.85);
+    --glow: rgba(165, 138, 242, 0.18);
+    --glow-secondary: rgba(185, 213, 255, 0.22);
+    --highlight: rgba(165, 138, 242, 0.12);
   }
 
   .dark {
     --theme-mode: 'dark';
-    --bg-primary: #080B12;
-    --bg-secondary: #0E1420;
-    --surface-primary: #111722;
-    --surface-glass: rgba(255, 255, 255, 0.05);
-    --primary: #22D3EE;
-    --primary-hover: #06B6D4;
-    --primary-dark: #0891B2;
-    --secondary: #8B5CF6;
-    --secondary-hover: #7C3AED;
-    --accent: #22D3EE;
-    --card: rgba(17, 23, 34, 0.72);
-    --card-border: rgba(255, 255, 255, 0.10);
+    --bg-primary: #0F111A;
+    --bg-secondary: #161926;
+    --surface-primary: #1A1E2E;
+    --surface-glass: rgba(26, 30, 46, 0.75);
+    --primary: #C4B4FA;
+    --primary-hover: #D8CCFD;
+    --primary-dark: #A58AF2;
+    --secondary: #A58AF2;
+    --secondary-hover: #8B5CF6;
+    --accent: #B9D5FF;
+    --card: rgba(26, 30, 46, 0.75);
+    --card-border: rgba(255, 255, 255, 0.12);
     --text-primary: #F8FAFC;
     --text-secondary: #A1AAB8;
     --text: #F8FAFC;
@@ -75,18 +88,66 @@
     --muted: #A1AAB8;
     --border-subtle: rgba(255, 255, 255, 0.10);
     --border: rgba(255, 255, 255, 0.10);
-    --glow: rgba(34, 211, 238, 0.15);
-    --glow-secondary: rgba(139, 92, 246, 0.15);
-    --highlight: rgba(34, 211, 238, 0.10);
+    --glow: rgba(165, 138, 242, 0.25);
+    --glow-secondary: rgba(185, 213, 255, 0.15);
+    --highlight: rgba(165, 138, 242, 0.15);
+  }
+
+  /* =========================================================================
+     THEME 02 — ABDULLAH TARIQ INSPIRED NEON LIME DEVELOPER PORTFOLIO TOKENS
+     ========================================================================= */
+  .theme-neon {
+    --theme-mode: 'neon';
+    --bg-primary: #F7F8F5;
+    --bg-secondary: #FFFFFF;
+    --surface-primary: #FFFFFF;
+    --surface-glass: rgba(255, 255, 255, 0.90);
+    --primary: #B7F32B;
+    --primary-hover: #C4FF32;
+    --primary-dark: #9BE614;
+    --secondary: #ECF9D3;
+    --secondary-hover: #B7F32B;
+    --accent: #B7F32B;
+    --card: #FFFFFF;
+    --card-border: #E6E8E1;
+    --text-primary: #10110F;
+    --text-secondary: #686B65;
+    --text: #10110F;
+    --text-heading: #10110F;
+    --muted: #686B65;
+    --border-subtle: #E6E8E1;
+    --border: #E6E8E1;
+    --glow: rgba(183, 243, 43, 0.35);
+    --glow-secondary: rgba(196, 255, 50, 0.20);
+    --highlight: #B7F32B;
   }
 
   html {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     color: var(--text-primary);
     background-color: var(--bg-primary);
-    color-scheme: dark;
+    color-scheme: light;
     transition: background-color 0.3s ease, color 0.3s ease;
     scroll-behavior: smooth;
+  }
+
+  .theme-neon body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #F7F8F5;
+    color: #10110F;
+  }
+
+  .theme-neon h1, 
+  .theme-neon h2, 
+  .theme-neon h3, 
+  .theme-neon h4, 
+  .theme-neon .font-display {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.035em;
+  }
+
+  .font-handwriting {
+    font-family: 'Caveat', cursive;
   }
 
   html.light {
@@ -98,8 +159,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 
   code, pre, .font-mono {
@@ -114,34 +174,50 @@
 }
 
 /* =========================================================================
-   REFINED GLASSMORPHISM DESIGN SYSTEM (3 VISUAL TIERS)
+   REFINED GLASSMORPHISM DESIGN SYSTEM (3 VISUAL TIERS WITH HARDWARE ACCELERATION)
    ========================================================================= */
+
+/* Dedicated hardware acceleration utility */
+.glass-accelerated {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
 
 /* Tier A: Primary Glass (Navigation, Modals, Hero Feature Panels) */
 .glass-primary-dark {
-  background: rgba(17, 23, 34, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(17, 23, 34, var(--glass-opacity-panel-dark, 0.82));
+  backdrop-filter: blur(var(--glass-blur-tier-a, 16px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-tier-a, 16px));
   border: 1px solid rgba(255, 255, 255, 0.10);
   box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.05);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .glass-primary-light {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, var(--glass-opacity-panel-light, 0.88));
+  backdrop-filter: blur(var(--glass-blur-tier-a, 16px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-tier-a, 16px));
   border: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: 0 12px 30px -10px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 /* Tier B: Standard Glass (Project Cards, Skills Cards, Contact Cards, Certificate Cards) */
 .glass-standard-dark {
-  background: rgba(17, 23, 34, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(17, 23, 34, var(--glass-opacity-card-dark, 0.70));
+  backdrop-filter: blur(var(--glass-blur-tier-b, 12px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-tier-b, 12px));
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.5);
   transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .glass-standard-dark:hover {
@@ -150,12 +226,15 @@
 }
 
 .glass-standard-light {
-  background: rgba(255, 255, 255, 0.80);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, var(--glass-opacity-card-light, 0.82));
+  backdrop-filter: blur(var(--glass-blur-tier-b, 12px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-tier-b, 12px));
   border: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: 0 6px 20px -6px rgba(15, 23, 42, 0.05);
   transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .glass-standard-light:hover {
@@ -176,39 +255,51 @@
 
 /* Backward-compatible aliases */
 .glass-card-dark {
-  background: rgba(17, 23, 34, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(17, 23, 34, var(--glass-opacity-card-dark, 0.70));
+  backdrop-filter: blur(var(--glass-blur-tier-b, 12px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-tier-b, 12px));
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.5);
   border-radius: 24px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .glass-card-light {
-  background: rgba(255, 255, 255, 0.80);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, var(--glass-opacity-card-light, 0.82));
+  backdrop-filter: blur(var(--glass-blur-tier-b, 12px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-tier-b, 12px));
   border: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: 0 6px 20px -6px rgba(15, 23, 42, 0.05);
   border-radius: 24px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .glass-panel-dark {
-  background: rgba(17, 23, 34, 0.78);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(17, 23, 34, var(--glass-opacity-panel-dark, 0.82));
+  backdrop-filter: blur(var(--glass-blur-tier-a, 16px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-tier-a, 16px));
   border: 1px solid rgba(255, 255, 255, 0.10);
   box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.6);
   border-radius: 24px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .glass-panel-light {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, var(--glass-opacity-panel-light, 0.88));
+  backdrop-filter: blur(var(--glass-blur-tier-a, 16px));
+  -webkit-backdrop-filter: blur(var(--glass-blur-tier-a, 16px));
   border: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06);
   border-radius: 24px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 /* Refined Minimal Scrollbar */
@@ -308,38 +399,237 @@
 }
 
 
+/* =========================================================================
+   HARDWARE-ACCELERATED MOBILE & LOW-POWER REDUCED-BLUR SYSTEM
+   ========================================================================= */
+
 /* Reference-matched portfolio refinements: mobile-first glass surfaces */
 :root {
   --portfolio-radius: 1.5rem;
-  --portfolio-glass-blur: 22px;
+  --portfolio-glass-blur: 20px;
 }
+
 html {
   scroll-padding-top: 1.25rem;
   scroll-padding-bottom: 7.5rem;
 }
+
 body {
   overflow-x: clip;
 }
+
 #main-navbar-wrapper {
   padding-bottom: max(10px, env(safe-area-inset-bottom));
+  transform: translateZ(0);
 }
+
 #glass-navbar {
   -webkit-tap-highlight-color: transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
+
 main {
   padding-bottom: max(7rem, calc(6rem + env(safe-area-inset-bottom))) !important;
 }
+
 #main-footer {
   padding-bottom: max(5rem, calc(4rem + env(safe-area-inset-bottom)));
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
-@supports not (backdrop-filter: blur(1px)) {
+
+/* Low-Power Mobile Screen & Touch Performance Optimizations:
+   Reduces multi-pass Gaussian blur on mobile GPUs while preserving visual aesthetics */
+@media (max-width: 768px), (pointer: coarse) {
+  :root {
+    --glass-blur-nav: 8px;
+    --glass-blur-modal: 6px;
+    --glass-blur-tier-a: 6px;
+    --glass-blur-tier-b: 0px;
+    --glass-blur-subtle: 0px;
+    --portfolio-glass-blur: 8px;
+    --glass-opacity-card-dark: 0.88;
+    --glass-opacity-card-light: 0.92;
+    --glass-opacity-panel-dark: 0.92;
+    --glass-opacity-panel-light: 0.94;
+    --glass-opacity-nav-dark: 0.94;
+    --glass-opacity-nav-light: 0.95;
+  }
+
+  /* Clamp heavy Tailwind backdrop-filter utilities to 6-8px on mobile to prevent GPU fill-rate exhaustion */
+  .backdrop-blur-3xl,
+  .backdrop-blur-2xl,
+  .backdrop-blur-xl {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+
+  .backdrop-blur-lg,
+  .backdrop-blur-md {
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+  }
+
+  /* Grid cards on mobile: remove expensive backdrop-filter on repeated elements, use crisp alpha surface */
+  .glass-standard-dark,
+  .glass-card-dark {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(17, 23, 34, 0.88);
+  }
+
+  .glass-standard-light,
+  .glass-card-light {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.92);
+  }
+
   #glass-navbar {
-    background-color: rgba(11, 16, 32, .97);
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    background-color: rgba(11, 16, 32, 0.94) !important;
   }
+
   .light #glass-navbar {
-    background-color: rgba(255, 255, 255, .98);
+    background-color: rgba(255, 255, 255, 0.95) !important;
   }
 }
+
+/* Explicit Low-Power Mode (Toggled via settings or triggered on low battery / constrained hardware) */
+html.low-power-mode {
+  --glass-blur-nav: 0px;
+  --glass-blur-modal: 0px;
+  --glass-blur-tier-a: 0px;
+  --glass-blur-tier-b: 0px;
+  --glass-blur-subtle: 0px;
+  --portfolio-glass-blur: 0px;
+}
+
+html.low-power-mode .glass-primary-dark,
+html.low-power-mode .glass-standard-dark,
+html.low-power-mode .glass-card-dark,
+html.low-power-mode .glass-panel-dark {
+  background: rgba(17, 23, 34, 0.95) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html.low-power-mode .glass-primary-light,
+html.low-power-mode .glass-standard-light,
+html.low-power-mode .glass-card-light,
+html.low-power-mode .glass-panel-light {
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html.low-power-mode #glass-navbar {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background-color: #0B1020 !important;
+}
+
+html.low-power-mode.light #glass-navbar {
+  background-color: #FFFFFF !important;
+}
+
+html.low-power-mode .backdrop-blur-3xl,
+html.low-power-mode .backdrop-blur-2xl,
+html.low-power-mode .backdrop-blur-xl,
+html.low-power-mode .backdrop-blur-lg,
+html.low-power-mode .backdrop-blur-md,
+html.low-power-mode .backdrop-blur-sm,
+html.low-power-mode .backdrop-blur {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* WCAG / System Reduced Transparency Preference */
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --glass-blur-nav: 0px;
+    --glass-blur-modal: 0px;
+    --glass-blur-tier-a: 0px;
+    --glass-blur-tier-b: 0px;
+    --glass-blur-subtle: 0px;
+    --portfolio-glass-blur: 0px;
+  }
+
+  .glass-primary-dark,
+  .glass-standard-dark,
+  .glass-card-dark,
+  .glass-panel-dark {
+    background: #0E1420 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .glass-primary-light,
+  .glass-standard-light,
+  .glass-card-light,
+  .glass-panel-light {
+    background: #FFFFFF !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  #glass-navbar {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: #0B1020 !important;
+  }
+
+  .light #glass-navbar {
+    background-color: #FFFFFF !important;
+  }
+
+  .backdrop-blur-3xl,
+  .backdrop-blur-2xl,
+  .backdrop-blur-xl,
+  .backdrop-blur-lg,
+  .backdrop-blur-md,
+  .backdrop-blur-sm,
+  .backdrop-blur {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* Fallback for Browsers/WebViews Without Backdrop-Filter Support */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-primary-dark,
+  .glass-panel-dark {
+    background: rgba(17, 23, 34, 0.96) !important;
+  }
+
+  .glass-primary-light,
+  .glass-panel-light {
+    background: rgba(255, 255, 255, 0.98) !important;
+  }
+
+  .glass-standard-dark,
+  .glass-card-dark {
+    background: rgba(17, 23, 34, 0.94) !important;
+  }
+
+  .glass-standard-light,
+  .glass-card-light {
+    background: rgba(255, 255, 255, 0.96) !important;
+  }
+
+  #glass-navbar {
+    background-color: rgba(11, 16, 32, 0.97) !important;
+  }
+
+  .light #glass-navbar {
+    background-color: rgba(255, 255, 255, 0.98) !important;
+  }
+}
+
 @media (max-width: 380px) {
   #glass-navbar {
     gap: .125rem;
@@ -355,6 +645,7 @@ main {
     min-width: 2.35rem;
   }
 }
+
 @media (prefers-reduced-motion: reduce) {
   #glass-navbar, #glass-navbar * {
     scroll-behavior: auto !important;
@@ -362,3 +653,50 @@ main {
     transition-duration: .01ms !important;
   }
 }
+
+/* ==============================================================
+   A4 PRINT SPECIFICATION & RESUME PRINT OVERRIDES
+   ============================================================== */
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide navigation, footers, background glows, floating buttons, and scroll bars */
+  #main-navbar-wrapper,
+  header,
+  footer,
+  .luxury-background,
+  #scroll-progress-bar,
+  #scroll-to-top-btn,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Target resume A4 canvas */
+  #resume-a4-canvas {
+    width: 210mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    page-break-inside: avoid !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+

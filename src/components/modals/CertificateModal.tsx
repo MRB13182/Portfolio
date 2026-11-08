@@ -268,7 +268,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
           onClick={onClose}
-          className="fixed inset-0 bg-black/85 backdrop-blur-xl"
+          className="fixed inset-0 bg-black/85 backdrop-blur-none sm:backdrop-blur-md transform-gpu"
         />
 
         {/* Modal Window Container */}
@@ -277,7 +277,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
           transition={{ type: 'spring', damping: 26, stiffness: 320 }}
-          className={`relative z-10 w-full max-w-5xl max-h-[94vh] flex flex-col rounded-2xl overflow-hidden shadow-2xl border backdrop-blur-2xl ${
+          className={`relative z-10 w-full max-w-5xl max-h-[94vh] flex flex-col rounded-2xl overflow-hidden shadow-2xl border glass-accelerated backdrop-blur-xl sm:backdrop-blur-2xl ${
             isDark
               ? 'bg-[#111722]/95 border-white/10 text-[#F8FAFC] shadow-[0_16px_50px_rgba(0,0,0,0.8)]'
               : 'bg-white/95 border-slate-200 shadow-2xl text-slate-800'

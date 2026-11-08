@@ -5,18 +5,13 @@ import { usePortfolioData } from '../../context/DataContext';
 import { Project } from '../../types';
 import { SafeImage } from '../common/SafeImage';
 import { ProjectModal } from '../modals/ProjectModal';
-import { 
-  Layers, 
-  ExternalLink, 
-  Github, 
-  Eye
-} from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 
 export const ProjectsSection: React.FC = () => {
   const { isDark } = useTheme();
   const { projects: dbProjects } = usePortfolioData();
-  const [selectedTag, setSelectedTag] = useState<string>('All');
   const [activeProjectModal, setActiveProjectModal] = useState<Project | null>(null);
 
   const allProjects: Project[] = (dbProjects && dbProjects.length > 0)
@@ -24,7 +19,7 @@ export const ProjectsSection: React.FC = () => {
         id: p.id || `proj-${idx}`,
         title: p.title,
         tagline: p.tagline || p.category || 'Modern Web Application',
-        category: p.category || 'Full Stack',
+        category: p.category || 'Web Application',
         description: p.description,
         fullDescription: p.full_description || p.fullDescription || p.description,
         techStack: p.tech_stack || p.techStack || ['React', 'TypeScript', 'Tailwind CSS'],
@@ -38,196 +33,107 @@ export const ProjectsSection: React.FC = () => {
       }))
     : portfolioConfig.projects;
 
-  const filterTags = ['All', 'Full Stack', 'Next.js', 'React', 'AI / API', 'TypeScript'];
-
-  const filteredProjects = allProjects.filter((proj) => {
-    if (selectedTag === 'All') return true;
-    const matchCat = proj.category.toLowerCase().includes(selectedTag.toLowerCase());
-    const matchStack = proj.techStack.some((t) => t.toLowerCase().includes(selectedTag.toLowerCase()));
-    return matchCat || matchStack;
-  });
+  // Selected 3 featured projects for the reference 3-column showcase
+  const featuredProjects = allProjects.slice(0, 3);
 
   return (
-    <section id="projects" className="relative py-20 sm:py-24 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section 
+      id="work" 
+      aria-labelledby="work-heading"
+      className="relative scroll-mt-24 px-4 sm:px-6 lg:px-8 py-12 sm:py-16"
+    >
+      <div className="max-w-6xl mx-auto">
         
-        {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-12 sm:mb-14">
-          <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold mb-3 border ${
-            isDark
-              ? 'bg-white/[0.04] text-[#22D3EE] border-white/10'
-              : 'bg-slate-100 text-[#0891B2] border-slate-200'
-          }`}>
-            <Layers className="w-3.5 h-3.5" />
-            <span>Featured Case Studies &amp; Software</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4 text-balance">
-            Engineering{' '}
-            <span className={`text-transparent bg-clip-text ${
-              isDark
-                ? 'bg-gradient-to-r from-white via-[#22D3EE] to-[#8B5CF6]'
-                : 'bg-gradient-to-r from-slate-900 via-[#0891B2] to-[#7C3AED]'
-            }`}>
-              Portfolio &amp; Projects
-            </span>
-          </h2>
-          
-          <p className={`max-w-2xl text-sm sm:text-base leading-relaxed ${
-            isDark ? 'text-[#A1AAB8]' : 'text-slate-600'
-          }`}>
-            A curated showcase of full-stack platforms, cloud architectures, and design systems engineered for scale, performance, and accessibility.
-          </p>
-        </div>
-
-        {/* Filter Segmented Controls */}
-        <div className="flex items-center justify-center gap-1.5 mb-10 flex-wrap">
-          {filterTags.map((tag) => {
-            const isActive = selectedTag === tag;
-            return (
-              <button
-                key={tag}
-                type="button"
-                onClick={() => setSelectedTag(tag)}
-                id={`project-filter-${tag.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
-                className={`min-h-[38px] px-4 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#22D3EE] focus-visible:outline-none ${
-                  isActive
-                    ? isDark
-                      ? 'bg-gradient-to-r from-[#22D3EE] to-[#8B5CF6] text-black font-bold shadow-sm shadow-cyan-500/20'
-                      : 'bg-gradient-to-r from-[#0891B2] to-[#7C3AED] text-white font-bold shadow-xs'
-                    : isDark
-                      ? 'bg-[#111722]/70 text-[#A1AAB8] border border-white/[0.07] hover:text-white hover:border-white/20'
-                      : 'bg-white text-slate-600 border border-slate-200 hover:text-slate-900 hover:border-slate-300 shadow-xs'
-                }`}
-              >
-                {tag}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Projects Grid (Tier B Standard Glass Cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '0px 0px -40px 0px' }}
-              transition={{ duration: 0.4, delay: Math.min(index * 0.08, 0.3) }}
-              whileHover={{ y: -4 }}
-              id={`project-card-${project.id}`}
-              className={`rounded-2xl border transition-all duration-300 flex flex-col justify-between overflow-hidden group ${
-                isDark
-                  ? 'bg-[#111722]/70 border-white/[0.08] hover:border-[#22D3EE]/35 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5)]'
-                  : 'bg-white/85 border-slate-200/90 hover:border-[#0891B2]/40 shadow-[0_6px_20px_-6px_rgba(15,23,42,0.05)]'
+        {/* Section Header (Heading on Left, "View All Projects ↗" on Right) */}
+        <div className="mb-8 sm:mb-10 flex items-end justify-between gap-4">
+          <div className="text-left">
+            <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#A58AF2] mb-1.5">
+              FEATURED PROJECTS
+            </div>
+            <h2 
+              id="work-heading"
+              className={`text-2xl sm:text-3xl lg:text-[34px] font-bold tracking-tight ${
+                isDark ? 'text-white' : 'text-[#171725]'
               }`}
             >
-              <div>
-                {/* 1. Project Image Container with Subtle Zoom */}
-                <div 
-                  className="relative aspect-[16/10] overflow-hidden cursor-pointer bg-slate-950/40"
-                  onClick={() => setActiveProjectModal(project)}
-                >
-                  <SafeImage
-                    src={project.image}
-                    alt={project.title}
-                    fallbackType="project"
-                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-103"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent opacity-75 group-hover:opacity-50 transition-opacity" />
-                  
-                  {/* Category Chip */}
-                  <div className="absolute top-3.5 left-3.5 z-10">
-                    <span className="px-2.5 py-0.5 rounded-md text-[10px] font-mono font-semibold uppercase tracking-wider backdrop-blur-md bg-black/60 text-[#22D3EE] border border-white/10">
-                      {project.category}
-                    </span>
-                  </div>
+              Selected Work
+            </h2>
+          </div>
 
-                  {/* View Details Hover Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                    <span className="px-3.5 py-1.5 rounded-xl bg-black/80 backdrop-blur-md text-white text-xs font-semibold flex items-center gap-2 border border-white/15 shadow-md">
-                      <Eye className="w-3.5 h-3.5 text-[#22D3EE]" /> Case Study
-                    </span>
-                  </div>
-                </div>
+          <Link
+            to="/projects"
+            className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold border transition duration-200 active:scale-95 ${
+              isDark
+                ? 'bg-white/10 hover:bg-white/15 border-white/15 text-white'
+                : 'bg-white/90 hover:bg-white border-slate-200/80 text-[#171725] shadow-xs'
+            }`}
+          >
+            <span>View All Projects</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
 
-                {/* 2. Project Title & 3. Concise Description */}
-                <div className="p-5 sm:p-6">
-                  <h3 
-                    onClick={() => setActiveProjectModal(project)}
-                    className={`font-black text-lg sm:text-xl tracking-tight mb-2 cursor-pointer transition-colors ${
-                      isDark ? 'text-white group-hover:text-[#22D3EE]' : 'text-slate-900 group-hover:text-[#0891B2]'
-                    }`}
-                  >
+        {/* 3-Column Project Cards Grid (Exact Reference Layout) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {featuredProjects.map((project, index) => (
+            <motion.article
+              key={project.id}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              onClick={() => setActiveProjectModal(project)}
+              className={`group rounded-3xl border p-3.5 sm:p-4 cursor-pointer backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between ${
+                isDark
+                  ? 'bg-[#161926]/80 border-white/10 shadow-[0_16px_35px_-12px_rgba(0,0,0,0.6)] hover:border-white/20'
+                  : 'bg-white/80 border-white/95 shadow-[0_18px_40px_-14px_rgba(165,138,242,0.16),0_1px_3px_rgba(0,0,0,0.02)] hover:border-white'
+              }`}
+            >
+              {/* Project Preview Image Container with Soft Gradient Backdrop */}
+              <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden bg-gradient-to-br from-slate-100 via-violet-50 to-blue-50 dark:from-slate-900 dark:to-slate-950 mb-3.5 relative border border-slate-200/40 dark:border-white/5">
+                <SafeImage
+                  src={project.image}
+                  alt={project.title}
+                  fallbackType="project"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                
+                {/* Subtle Inner Glass Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+
+              {/* Project Title, Category, and Bottom Right Arrow */}
+              <div className="flex items-center justify-between gap-3 px-1.5 pb-1">
+                <div className="min-w-0">
+                  <h3 className={`text-sm sm:text-base font-bold tracking-tight truncate transition-colors group-hover:text-[#8B5CF6] ${
+                    isDark ? 'text-white' : 'text-[#171725]'
+                  }`}>
                     {project.title}
                   </h3>
-
-                  <p className={`text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3 ${
-                    isDark ? 'text-[#A1AAB8]' : 'text-slate-600'
+                  <p className={`text-[11px] sm:text-xs font-medium truncate mt-0.5 ${
+                    isDark ? 'text-slate-400' : 'text-[#777787]'
                   }`}>
-                    {project.description}
+                    {project.category}
                   </p>
+                </div>
 
-                  {/* 4. Technology Tags (Tier C Subtle Surface) */}
-                  <div className="flex flex-wrap gap-1.5 mb-2">
-                    {project.techStack.map((tech) => (
-                      <span
-                        key={tech}
-                        className={`text-[10px] font-mono px-2 py-0.5 rounded-md border ${
-                          isDark
-                            ? 'bg-white/[0.04] border-white/[0.07] text-slate-300'
-                            : 'bg-slate-100/90 border-slate-200 text-slate-700'
-                        }`}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                {/* Arrow Icon in Rounded Circle */}
+                <div className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${
+                  isDark
+                    ? 'border-white/15 bg-white/10 text-white group-hover:bg-white/20'
+                    : 'border-slate-200/80 bg-white text-[#171725] group-hover:shadow-sm'
+                }`}>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
                 </div>
               </div>
 
-              {/* 5. Live Demo and GitHub Action Buttons */}
-              <div className={`p-5 sm:p-6 pt-0 flex items-center gap-3 border-t ${
-                isDark ? 'border-white/[0.06] pt-4' : 'border-slate-200/80 pt-4'
-              }`}>
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    id={`project-live-btn-${project.id}`}
-                    className="flex-1 min-h-[40px] py-2 px-3.5 rounded-xl text-xs font-bold text-center flex items-center justify-center gap-1.5 transition-all bg-gradient-to-r from-[#22D3EE] to-[#8B5CF6] text-black hover:opacity-95 active:scale-95 shadow-xs focus-visible:ring-2 focus-visible:ring-[#22D3EE] focus-visible:outline-none"
-                  >
-                    <span>Live Demo</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                )}
-
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    id={`project-github-btn-${project.id}`}
-                    className={`min-h-[40px] py-2 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 border transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-[#22D3EE] focus-visible:outline-none ${
-                      isDark
-                        ? 'bg-white/[0.04] border-white/10 text-white hover:bg-white/[0.08] hover:border-white/20'
-                        : 'bg-white border-slate-200 text-slate-800 hover:bg-slate-50 hover:border-slate-300'
-                    }`}
-                  >
-                    <Github className="w-4 h-4 text-[#8B5CF6]" />
-                    <span>Source</span>
-                  </a>
-                )}
-              </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 
       </div>
 
-      {/* Project Case Study Modal */}
+      {/* Interactive Detail Modal */}
       {activeProjectModal && (
         <ProjectModal
           project={activeProjectModal}

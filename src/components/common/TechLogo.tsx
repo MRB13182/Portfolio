@@ -484,6 +484,25 @@ export const TechLogo: React.FC<TechLogoProps> = ({
         </svg>
       );
 
+    case 'firebase':
+      return (
+        <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="none">
+          <path d="M4.5 18.5L6.8 4.2C6.9 3.6 7.7 3.4 8.1 3.9L10.5 7.5L4.5 18.5Z" fill="#FFA000" />
+          <path d="M12.5 10.5L14.2 7.2C14.6 6.5 15.6 6.6 15.9 7.3L19.5 18.5L12.5 10.5Z" fill="#F57C00" />
+          <path d="M4.5 18.5L12 22.8L19.5 18.5L12.5 10.5L4.5 18.5Z" fill="#FFCA28" />
+        </svg>
+      );
+
+    case 'vscode':
+    case 'visualstudiocode':
+      return (
+        <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="none">
+          <path d="M17.5 2.5L10.2 9.4L6 6.2L2.5 8V16L6 17.8L10.2 14.6L17.5 21.5L21.5 19.5V4.5L17.5 2.5Z" fill="#007ACC" />
+          <path d="M17.5 2.5L10.2 9.4L6 6.2L2.5 8V16L6 17.8L10.2 14.6L17.5 21.5V2.5Z" fill="#0065A9" />
+          <path d="M17.5 8.2L12.4 12L17.5 15.8V8.2Z" fill="#1F9CF0" />
+        </svg>
+      );
+
     default:
       return (
         <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

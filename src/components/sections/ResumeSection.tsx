@@ -3,6 +3,7 @@ import { useTheme } from '../../context/ThemeContext';
 import { portfolioConfig } from '../../config/portfolio';
 import { usePortfolioData } from '../../context/DataContext';
 import { ScrollReveal } from '../common/ScrollReveal';
+import { Link } from 'react-router-dom';
 import { 
   FileText, 
   Download, 
@@ -10,7 +11,8 @@ import {
   CheckCircle2, 
   Briefcase, 
   GraduationCap, 
-  ShieldCheck
+  ShieldCheck,
+  Sparkles
 } from 'lucide-react';
 
 interface ResumeSectionProps {
@@ -76,7 +78,7 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenResumeDownlo
           {/* Left Column: Resume Information & Actions */}
           <ScrollReveal direction="right" distance={20} duration={0.55} className="lg:col-span-7 flex flex-col">
             <div
-              className={`p-6 sm:p-8 rounded-2xl border flex flex-col justify-between h-full backdrop-blur-xl ${
+              className={`p-6 sm:p-8 rounded-2xl border flex flex-col justify-between h-full glass-accelerated backdrop-blur-xl ${
                 isDark
                   ? 'bg-[#111722]/80 border-white/10 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.6)] text-[#F8FAFC]'
                   : 'bg-white/85 border-slate-200/90 shadow-[0_12px_30px_-10px_rgba(15,23,42,0.06)] text-slate-800'
@@ -152,14 +154,27 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenResumeDownlo
               {/* Action Buttons */}
               <div>
                 <div className="flex flex-wrap items-center gap-3 mb-3.5">
+                  <Link
+                    to="/resume"
+                    id="resume-interactive-builder-btn"
+                    className="min-h-[42px] px-5 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer transition-all bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-600 text-white hover:opacity-95 active:scale-95 shadow-md shadow-blue-500/20 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none"
+                  >
+                    <Sparkles className="w-4 h-4 text-cyan-200" />
+                    <span>Open Resume Generator</span>
+                  </Link>
+
                   <button
                     type="button"
                     onClick={handleDirectDownload}
                     id="resume-download-primary-btn"
-                    className="min-h-[42px] px-5 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer transition-all bg-gradient-to-r from-[#22D3EE] to-[#8B5CF6] text-black hover:opacity-95 active:scale-95 shadow-xs focus-visible:ring-2 focus-visible:ring-[#22D3EE] focus-visible:outline-none"
+                    className={`min-h-[42px] px-5 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 border cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-[#22D3EE] focus-visible:outline-none ${
+                      isDark
+                        ? 'bg-white/[0.04] border-white/10 text-white hover:bg-white/[0.08] hover:border-white/20'
+                        : 'bg-white border-slate-200 text-slate-800 hover:bg-slate-50 hover:border-slate-300'
+                    }`}
                   >
-                    <Download className="w-4 h-4" />
-                    <span>Download Resume (PDF)</span>
+                    <Download className="w-4 h-4 text-cyan-400" />
+                    <span>Direct PDF</span>
                   </button>
 
                   <button
@@ -168,12 +183,12 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenResumeDownlo
                     id="resume-customize-export-btn"
                     className={`min-h-[42px] px-5 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 border cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-[#22D3EE] focus-visible:outline-none ${
                       isDark
-                        ? 'bg-white/[0.04] border-white/10 text-white hover:bg-white/[0.08] hover:border-white/20'
-                        : 'bg-white border-slate-200 text-slate-800 hover:bg-slate-50 hover:border-slate-300'
+                        ? 'bg-white/[0.04] border-white/10 text-slate-300 hover:bg-white/[0.08] hover:border-white/20'
+                        : 'bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200 hover:border-slate-300'
                     }`}
                   >
-                    <Eye className="w-4 h-4 text-[#22D3EE]" />
-                    <span>Customize &amp; Print</span>
+                    <Eye className="w-4 h-4 text-violet-400" />
+                    <span>Quick Preview</span>
                   </button>
                 </div>
 
@@ -189,7 +204,7 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenResumeDownlo
           <ScrollReveal direction="left" distance={20} duration={0.55} delay={0.1} className="lg:col-span-5 flex flex-col items-center justify-center">
             <div 
               onClick={onOpenResumeDownload}
-              className={`w-full max-w-md p-6 rounded-2xl border cursor-pointer transition-all duration-300 hover:scale-[1.01] relative group backdrop-blur-xl ${
+              className={`w-full max-w-md p-6 rounded-2xl border cursor-pointer transition-all duration-300 hover:scale-[1.01] relative group glass-accelerated backdrop-blur-xl ${
                 isDark
                   ? 'bg-[#111722]/80 border-white/10 hover:border-[#22D3EE]/40 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.6)]'
                   : 'bg-white/90 border-slate-200 hover:border-[#0891B2]/40 shadow-[0_12px_30px_-10px_rgba(15,23,42,0.06)]'
