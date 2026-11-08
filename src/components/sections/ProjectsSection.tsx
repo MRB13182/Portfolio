@@ -84,7 +84,7 @@ export const ProjectsSection: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: shouldReduceMotion ? 0 : index * 0.08, ease: [0.21, 0.47, 0.32, 0.98] }}
               onClick={() => setActiveProjectModal(project)}
-              className={`group rounded-3xl border p-3.5 sm:p-4 cursor-pointer backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between ${
+              className={`group rounded-3xl border p-3.5 sm:p-4 cursor-pointer backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 motion-hover-lift flex flex-col justify-between ${
                 isDark
                   ? 'bg-[#161926]/80 border-white/10 shadow-[0_16px_35px_-12px_rgba(0,0,0,0.6)] hover:border-white/20'
                   : 'bg-white/80 border-white/95 shadow-[0_18px_40px_-14px_rgba(165,138,242,0.16),0_1px_3px_rgba(0,0,0,0.02)] hover:border-white'
