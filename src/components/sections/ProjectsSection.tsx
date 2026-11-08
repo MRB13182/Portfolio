@@ -79,10 +79,10 @@ export const ProjectsSection: React.FC = () => {
           {featuredProjects.map((project, index) => (
             <motion.article
               key={project.id}
-              initial={{ opacity: 0, y: 16 }}
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
+              transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: shouldReduceMotion ? 0 : index * 0.08, ease: [0.21, 0.47, 0.32, 0.98] }}
               onClick={() => setActiveProjectModal(project)}
               className={`group rounded-3xl border p-3.5 sm:p-4 cursor-pointer backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between ${
                 isDark
