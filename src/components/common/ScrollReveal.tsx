@@ -57,6 +57,27 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   );
 };
 
+
+export const BlurReveal: React.FC<Omit<ScrollRevealProps, 'direction'>> = (props) => (
+  <ScrollReveal {...props} direction="none" blur={8} />
+);
+
+export const RevealUp: React.FC<Omit<ScrollRevealProps, 'direction'>> = (props) => (
+  <ScrollReveal {...props} direction="up" />
+);
+
+export const RevealLeft: React.FC<Omit<ScrollRevealProps, 'direction'>> = (props) => (
+  <ScrollReveal {...props} direction="left" />
+);
+
+export const RevealRight: React.FC<Omit<ScrollRevealProps, 'direction'>> = (props) => (
+  <ScrollReveal {...props} direction="right" />
+);
+
+export const FadeIn: React.FC<Omit<ScrollRevealProps, 'direction'>> = (props) => (
+  <ScrollReveal {...props} direction="none" />
+);
+
 export interface StaggerContainerProps {
   children: React.ReactNode;
   className?: string;
