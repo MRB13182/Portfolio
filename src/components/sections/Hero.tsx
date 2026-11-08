@@ -5,10 +5,12 @@ import { portfolioConfig } from '../../config/portfolio';
 import { usePortfolioData } from '../../context/DataContext';
 import { SafeImage } from '../common/SafeImage';
 import { ArrowUpRight, Sparkles } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
+import { FloatingElement } from '../common/ScrollReveal';
 
 export const Hero: React.FC = () => {
   const { isDark } = useTheme();
+  const shouldReduceMotion = useReducedMotion();
   const { profile } = usePortfolioData();
 
   const fullName = profile?.name || portfolioConfig.personal.name || 'Aarav Singh';
@@ -48,7 +50,7 @@ export const Hero: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.65, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 flex flex-col items-start text-left"
           >
             {/* Small Greeting Label */}
@@ -128,7 +130,7 @@ export const Hero: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.7, delay: shouldReduceMotion ? 0 : 0.12, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 relative flex justify-center items-center"
           >
             {/* Ambient Back Glow for Arch */}
@@ -138,6 +140,7 @@ export const Hero: React.FC = () => {
             />
 
             {/* Main Arch Frame Container (Matching Reference Silhouette) */}
+            <FloatingElement distance={8} duration={5} className="relative z-10">
             <div 
               className={`relative z-10 w-[290px] sm:w-[350px] h-[380px] sm:h-[450px] rounded-t-[130px] sm:rounded-t-[150px] rounded-b-[44px] p-2 sm:p-2.5 border backdrop-blur-xl transition-all duration-300 ${
                 isDark
@@ -158,6 +161,9 @@ export const Hero: React.FC = () => {
                 <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
               </div>
             </div>
+            </FloatingElement>
+
+
 
             {/* Floating Card 1: Experience Badge (Top Right) */}
             <motion.div

@@ -13,6 +13,7 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { motion } from 'motion/react';
+import { AnimatedCounter } from '../components/common/AnimatedCounter';
 
 // Hero components
 import { Hero } from '../components/sections/Hero';
@@ -314,7 +315,9 @@ export const Home: React.FC = () => {
                   <div className={`font-display font-black text-2xl sm:text-4xl tracking-tight mb-1 ${
                     isNeon ? 'text-[#10110F]' : 'text-[#171725]'
                   }`}>
-                    {item.value}
+                    {typeof item.value === 'string' && /^\d+(\.\d+)?\+?$/.test(item.value)
+                      ? <AnimatedCounter value={Number(item.value.replace('+', ''))} suffix={item.value.endsWith('+') ? '+' : ''} />
+                      : item.value}
                   </div>
                   <div className={`font-bold text-xs sm:text-sm mb-0.5 ${
                     isNeon ? 'text-[#10110F]' : 'text-[#171725]'
