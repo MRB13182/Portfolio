@@ -6,11 +6,12 @@ import { Project } from '../../types';
 import { SafeImage } from '../common/SafeImage';
 import { ProjectModal } from '../modals/ProjectModal';
 import { ArrowUpRight } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { Link } from 'react-router-dom';
 
 export const ProjectsSection: React.FC = () => {
   const { isDark } = useTheme();
+  const shouldReduceMotion = useReducedMotion();
   const { projects: dbProjects } = usePortfolioData();
   const [activeProjectModal, setActiveProjectModal] = useState<Project | null>(null);
 
