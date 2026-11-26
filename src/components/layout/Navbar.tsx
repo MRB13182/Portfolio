@@ -157,8 +157,10 @@ export const Navbar: React.FC = () => {
             type="button"
             onClick={togglePortfolioTheme}
             id="theme-switcher-btn"
-            title={`Current: ${isNeon ? 'Lime Theme' : 'Lavender Theme'}. Click to switch to ${isNeon ? 'Theme 1 (Lavender)' : 'Theme 2 (Neon Lime)'}`}
-            aria-label={`Toggle theme between Lavender and Neon Lime (Currently ${isNeon ? 'Neon Lime' : 'Lavender'})`}
+            aria-pressed={isNeon}
+            data-active-theme={portfolioTheme}
+            title={`Current theme: ${isNeon ? 'Neon Lime' : 'Lavender'}. Activate to switch to ${isNeon ? 'Lavender' : 'Neon Lime'}`}
+            aria-label={`Switch to ${isNeon ? 'Lavender' : 'Neon Lime'} theme`}
             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border transition-all duration-200 cursor-pointer shadow-xs active:scale-95 focus-visible:outline-none focus-visible:ring-2 ${
               isNeon
                 ? 'bg-[#10110F] text-[#B7F32B] border-[#10110F] hover:bg-black'
