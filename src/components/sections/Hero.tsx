@@ -131,7 +131,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: shouldReduceMotion ? 0 : 0.7, delay: shouldReduceMotion ? 0 : 0.12, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 relative flex justify-center items-center"
+            className="lg:col-span-5 relative flex justify-center items-center w-full min-w-0 px-3 sm:px-0"
           >
             {/* Ambient Back Glow for Arch */}
             <div 
@@ -142,7 +142,7 @@ export const Hero: React.FC = () => {
             {/* Main Arch Frame Container (Matching Reference Silhouette) */}
             <FloatingElement distance={8} duration={5} className="relative z-10">
             <div 
-              className={`relative z-10 w-[290px] sm:w-[350px] h-[380px] sm:h-[450px] rounded-t-[130px] sm:rounded-t-[150px] rounded-b-[44px] p-2 sm:p-2.5 border backdrop-blur-xl transition-all duration-300 ${
+              className={`relative z-10 w-[min(76vw,290px)] sm:w-[350px] h-[min(100vw,380px)] sm:h-[450px] rounded-t-[130px] sm:rounded-t-[150px] rounded-b-[44px] p-2 sm:p-2.5 border backdrop-blur-xl transition-all duration-300 ${
                 isDark
                   ? 'bg-gradient-to-b from-white/15 to-[#161926]/90 border-white/20 shadow-[0_24px_50px_-15px_rgba(0,0,0,0.7)]'
                   : 'bg-gradient-to-b from-white/95 via-white/80 to-[#F7F7FB]/90 border-white/95 shadow-[0_24px_50px_-15px_rgba(165,138,242,0.22),0_4px_12px_rgba(0,0,0,0.02)]'
@@ -170,7 +170,7 @@ export const Hero: React.FC = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: shouldReduceMotion ? 0 : 0.35, duration: shouldReduceMotion ? 0 : 0.5 }}
-              className={`absolute -top-3 right-0 sm:-right-4 z-20 px-4 py-3 rounded-2xl border backdrop-blur-xl shadow-lg ${
+              className={`absolute -top-3 right-1 sm:-right-4 z-20 max-w-[46%] px-4 py-3 rounded-2xl border backdrop-blur-xl shadow-lg ${
                 isDark
                   ? 'bg-[#161926]/90 border-white/15 text-white shadow-black/40'
                   : 'bg-white/90 border-white text-[#171725] shadow-[0_12px_28px_-8px_rgba(165,138,242,0.25)]'
@@ -189,7 +189,7 @@ export const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: shouldReduceMotion ? 0 : 0.45, duration: shouldReduceMotion ? 0 : 0.5 }}
-              className={`absolute -bottom-4 right-[-10px] sm:-right-6 z-20 px-4 py-3 rounded-2xl border backdrop-blur-xl shadow-lg w-40 sm:w-44 ${
+              className={`absolute -bottom-4 right-0 sm:-right-6 z-20 max-w-[52%] px-4 py-3 rounded-2xl border backdrop-blur-xl shadow-lg w-40 sm:w-44 ${
                 isDark
                   ? 'bg-[#161926]/90 border-white/15 text-white shadow-black/40'
                   : 'bg-white/90 border-white text-[#171725] shadow-[0_14px_30px_-8px_rgba(165,138,242,0.25)]'
@@ -218,7 +218,7 @@ export const Hero: React.FC = () => {
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: shouldReduceMotion ? 0 : 0.55, type: 'spring' }}
-              className={`absolute top-[48%] left-[-12px] sm:left-[-18px] z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full border flex items-center justify-center backdrop-blur-xl shadow-md ${
+              className={`absolute top-[48%] left-0 sm:left-[-18px] z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full border flex items-center justify-center backdrop-blur-xl shadow-md ${
                 isDark
                   ? 'bg-[#161926]/90 border-white/20 text-[#C4B4FA]'
                   : 'bg-white/95 border-white text-[#8B5CF6] shadow-[0_8px_20px_rgba(165,138,242,0.3)]'
