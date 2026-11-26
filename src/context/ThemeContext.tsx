@@ -24,9 +24,13 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // Theme 1 (Lavender) is the DEFAULT theme; Theme 2 (Neon Lime) is the ALTERNATIVE
   const [portfolioTheme, setPortfolioThemeState] = useState<PortfolioTheme>(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('app_portfolio_visual_theme') as PortfolioTheme | null;
-      if (saved === 'lavender' || saved === 'neon') {
-        return saved;
+      try {
+        const saved = localStorage.getItem('app_portfolio_visual_theme') as PortfolioTheme | null;
+        if (saved === 'lavender' || saved === 'neon') {
+          return saved;
+        }
+      } catch {
+        // Storage can be unavailable in restricted browser contexts; use the default theme.
       }
     }
     return 'lavender';
@@ -68,7 +72,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       root.classList.remove('theme-neon');
     }
     
-    localStorage.setItem('app_portfolio_visual_theme', portfolioTheme);
+    try {
+      localStorage.setItem('app_portfolio_visual_theme', portfolioTheme);
+    } catch {
+      // The active theme still works for this session when storage is unavailable.
+    }
   }, [portfolioTheme]);
 
   useEffect(() => {
@@ -80,7 +88,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       root.classList.remove('low-power-mode');
       root.removeAttribute('data-low-power');
     }
-    localStorage.setItem('app_portfolio_low_power', String(isLowPowerMode));
+    try {
+      localStorage.setItem('app_portfolio_low_power', String(isLowPowerMode));
+    } catch {
+      // Low-power preference remains active for the current session.
+    }
   }, [isLowPowerMode]);
 
   const togglePortfolioTheme = () => {

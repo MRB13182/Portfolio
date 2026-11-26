@@ -17,10 +17,10 @@ export const Hero: React.FC = () => {
   const primaryTitle = (profile?.titles && profile.titles[0]) || 'Digital Product Designer';
   const profileImg = (typeof profile?.profile_image === 'string' && profile.profile_image.trim())
     ? profile.profile_image.trim()
-    : portfolioConfig.assets.profileImage || '/profile/profile.png';
+    : '/profile/lavender-portrait.webp';
   
-  const introText = profile?.bio || 'I craft meaningful digital experiences that are intuitive, beautiful and built with purpose.';
-  const yearsExp = profile?.years_of_experience || portfolioConfig.personal.yearsOfExperience || 5;
+  const introText = profile?.bio || 'I design and build thoughtful digital experiences with clean interfaces, reliable engineering and attention to detail.';
+  const yearsExp = profile?.years_of_experience || portfolioConfig.personal.yearsOfExperience || 3;
 
   const trustedBrands = [
     { name: 'Google', icon: 'Google' },
@@ -39,7 +39,7 @@ export const Hero: React.FC = () => {
     <section 
       id="home" 
       aria-label="Introduction & Hero"
-      className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative pt-28 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[radial-gradient(ellipse_at_18%_18%,rgba(196,180,250,0.25),transparent_38%),radial-gradient(ellipse_at_82%_68%,rgba(185,213,255,0.24),transparent_42%)]"
     >
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -83,7 +83,7 @@ export const Hero: React.FC = () => {
               <Link
                 to="/projects"
                 id="hero-view-work-cta"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-[13px] font-bold bg-[#171725] text-white hover:bg-[#252538] transition-all duration-200 shadow-md shadow-black/10 active:scale-95"
+                className="portfolio-interactive inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-[13px] font-bold bg-[#171725] text-white hover:bg-[#252538] transition-all duration-200 shadow-md shadow-black/10 active:scale-95"
               >
                 <span>View My Work</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -93,7 +93,7 @@ export const Hero: React.FC = () => {
               <Link
                 to="/contact"
                 id="hero-contact-cta"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-[13px] font-semibold border backdrop-blur-md transition-all duration-200 active:scale-95 border-slate-200/80 bg-white/80 hover:bg-white text-[#171725] hover:shadow-xs"
+                className="portfolio-interactive inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-[13px] font-semibold border backdrop-blur-md transition-all duration-200 active:scale-95 border-slate-200/80 bg-white/80 hover:bg-white text-[#171725] hover:shadow-xs"
               >
                 <span>Contact Me</span>
                 <ArrowUpRight className="w-4 h-4 opacity-70" />
@@ -101,7 +101,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Trusted Brands / Technologies Indicators */}
-            <div className="flex flex-col gap-2 pt-2 border-t border-slate-200/60 dark:border-white/10 w-full max-w-lg">
+            <div className="flex flex-col gap-2 pt-4 border-t border-slate-200/60 w-full max-w-lg">
               <span className={`text-[10px] sm:text-[11px] font-semibold tracking-wider uppercase ${
                 isDark ? 'text-slate-400' : 'text-[#777787]'
               }`}>
@@ -131,7 +131,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: shouldReduceMotion ? 0 : 0.7, delay: shouldReduceMotion ? 0 : 0.12, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 relative flex justify-center items-center"
+            className="lg:col-span-5 relative flex justify-center items-center w-full min-w-0 px-3 sm:px-0"
           >
             {/* Ambient Back Glow for Arch */}
             <div 
@@ -142,7 +142,7 @@ export const Hero: React.FC = () => {
             {/* Main Arch Frame Container (Matching Reference Silhouette) */}
             <FloatingElement distance={8} duration={5} className="relative z-10">
             <div 
-              className={`relative z-10 w-[290px] sm:w-[350px] h-[380px] sm:h-[450px] rounded-t-[130px] sm:rounded-t-[150px] rounded-b-[44px] p-2 sm:p-2.5 border backdrop-blur-xl transition-all duration-300 ${
+              className={`relative z-10 w-[min(76vw,290px)] sm:w-[350px] h-[min(100vw,380px)] sm:h-[450px] rounded-t-[130px] sm:rounded-t-[150px] rounded-b-[44px] p-2 sm:p-2.5 border backdrop-blur-xl transition-all duration-300 ${
                 isDark
                   ? 'bg-gradient-to-b from-white/15 to-[#161926]/90 border-white/20 shadow-[0_24px_50px_-15px_rgba(0,0,0,0.7)]'
                   : 'bg-gradient-to-b from-white/95 via-white/80 to-[#F7F7FB]/90 border-white/95 shadow-[0_24px_50px_-15px_rgba(165,138,242,0.22),0_4px_12px_rgba(0,0,0,0.02)]'
@@ -151,7 +151,7 @@ export const Hero: React.FC = () => {
               {/* Inner Picture Container with Curved Top Arch */}
               <div className="w-full h-full rounded-t-[120px] sm:rounded-t-[140px] rounded-b-[38px] overflow-hidden relative bg-slate-900">
                 <SafeImage
-                  src={profileImg}
+                  src="/profile/lavender-portrait.webp"
                   alt={fullName}
                   fallbackType="profile"
                   className="w-full h-full object-cover object-top"
@@ -169,8 +169,8 @@ export const Hero: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.5 }}
-              className={`absolute -top-3 right-0 sm:-right-4 z-20 px-4 py-3 rounded-2xl border backdrop-blur-xl shadow-lg ${
+              transition={{ delay: shouldReduceMotion ? 0 : 0.35, duration: shouldReduceMotion ? 0 : 0.5 }}
+              className={`absolute -top-3 right-1 sm:-right-4 z-20 max-w-[46%] px-4 py-3 rounded-2xl border backdrop-blur-xl shadow-lg ${
                 isDark
                   ? 'bg-[#161926]/90 border-white/15 text-white shadow-black/40'
                   : 'bg-white/90 border-white text-[#171725] shadow-[0_12px_28px_-8px_rgba(165,138,242,0.25)]'
@@ -188,8 +188,8 @@ export const Hero: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45, duration: 0.5 }}
-              className={`absolute -bottom-4 right-[-10px] sm:-right-6 z-20 px-4 py-3 rounded-2xl border backdrop-blur-xl shadow-lg w-40 sm:w-44 ${
+              transition={{ delay: shouldReduceMotion ? 0 : 0.45, duration: shouldReduceMotion ? 0 : 0.5 }}
+              className={`absolute -bottom-4 right-0 sm:-right-6 z-20 max-w-[52%] px-4 py-3 rounded-2xl border backdrop-blur-xl shadow-lg w-40 sm:w-44 ${
                 isDark
                   ? 'bg-[#161926]/90 border-white/15 text-white shadow-black/40'
                   : 'bg-white/90 border-white text-[#171725] shadow-[0_14px_30px_-8px_rgba(165,138,242,0.25)]'
@@ -198,7 +198,7 @@ export const Hero: React.FC = () => {
               <div className={`text-[10px] font-semibold uppercase tracking-wider mb-0.5 ${isDark ? 'text-slate-400' : 'text-[#777787]'}`}>
                 Design Impact
               </div>
-              <div className="text-base sm:text-lg font-black tracking-tight mb-1 text-[#171725] dark:text-white">
+              <div className="text-base sm:text-lg font-black tracking-tight mb-1 text-[#171725]">
                 +120%
               </div>
 
@@ -217,8 +217,8 @@ export const Hero: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.55, type: 'spring' }}
-              className={`absolute top-[48%] left-[-12px] sm:left-[-18px] z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full border flex items-center justify-center backdrop-blur-xl shadow-md ${
+              transition={{ delay: shouldReduceMotion ? 0 : 0.55, type: 'spring' }}
+              className={`absolute top-[48%] left-0 sm:left-[-18px] z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full border flex items-center justify-center backdrop-blur-xl shadow-md ${
                 isDark
                   ? 'bg-[#161926]/90 border-white/20 text-[#C4B4FA]'
                   : 'bg-white/95 border-white text-[#8B5CF6] shadow-[0_8px_20px_rgba(165,138,242,0.3)]'

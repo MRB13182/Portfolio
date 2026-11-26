@@ -11,12 +11,13 @@ import {
   Sparkles,
   Zap
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 
 export const Navbar: React.FC = () => {
   const location = useLocation();
   const { portfolioTheme, isNeon, togglePortfolioTheme } = useTheme();
   const { profile } = usePortfolioData();
+  const shouldReduceMotion = useReducedMotion();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -70,7 +71,7 @@ export const Navbar: React.FC = () => {
         <Link 
           to="/"
           id="navbar-brand-logo"
-          className="flex items-center gap-2.5 sm:gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B7F32B] rounded-full"
+          className="flex items-center gap-2.5 sm:gap-3 group min-w-0 flex-1 md:flex-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B7F32B] rounded-full"
         >
           {isNeon ? (
             /* Theme 2: Black rounded logo container matching reference */
@@ -128,7 +129,7 @@ export const Navbar: React.FC = () => {
                         ? 'bg-[#F7F8F5] border border-[#E6E8E1] shadow-xs'
                         : 'bg-white/90 border border-white/80 shadow-[0_2px_8px_rgba(0,0,0,0.04)]'
                     }`}
-                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 30, duration: shouldReduceMotion ? 0 : 0.25 }}
                   />
                 )}
                 <span className="relative z-10 flex items-center gap-1.5">
@@ -143,7 +144,7 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Right: Theme Switcher Button & Primary CTA */}
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           
           {/* 
             STRICT REQUIREMENT 1 & 2:
@@ -157,8 +158,10 @@ export const Navbar: React.FC = () => {
             type="button"
             onClick={togglePortfolioTheme}
             id="theme-switcher-btn"
-            title={`Current: ${isNeon ? 'Lime Theme' : 'Lavender Theme'}. Click to switch to ${isNeon ? 'Theme 1 (Lavender)' : 'Theme 2 (Neon Lime)'}`}
-            aria-label={`Toggle theme between Lavender and Neon Lime (Currently ${isNeon ? 'Neon Lime' : 'Lavender'})`}
+            aria-pressed={isNeon}
+            data-active-theme={portfolioTheme}
+            title={`Current theme: ${isNeon ? 'Neon Lime' : 'Lavender'}. Activate to switch to ${isNeon ? 'Lavender' : 'Neon Lime'}`}
+            aria-label={`Switch to ${isNeon ? 'Lavender' : 'Neon Lime'} theme`}
             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border transition-all duration-200 cursor-pointer shadow-xs active:scale-95 focus-visible:outline-none focus-visible:ring-2 ${
               isNeon
                 ? 'bg-[#10110F] text-[#B7F32B] border-[#10110F] hover:bg-black'
@@ -215,7 +218,7 @@ export const Navbar: React.FC = () => {
             initial={{ opacity: 0, y: -10, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.2 }}
             className={`pointer-events-auto absolute top-14 sm:top-16 inset-x-4 max-w-lg mx-auto rounded-3xl border p-4 backdrop-blur-2xl shadow-2xl ${
               isNeon
                 ? 'bg-white/98 border-[#E6E8E1] text-[#10110F]'
