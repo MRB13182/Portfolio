@@ -1,21 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Sparkles, CheckCircle2 } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { usePortfolioData } from '../../context/DataContext';
 import { portfolioConfig } from '../../config/portfolio';
 
 export const NeonHero: React.FC = () => {
   const { profile } = usePortfolioData();
+  const shouldReduceMotion = useReducedMotion();
   const fullName = profile?.name || portfolioConfig.personal.name || 'Abdullah Tariq';
-  const firstName = fullName.split(' ')[0] || 'Abdullah';
-  const lastName = fullName.split(' ').slice(1).join(' ') || 'Tariq';
-  const profileImg = profile?.profile_image || portfolioConfig.assets.profileImage || '/profile/profile.png';
+  const profileImg = '/profile/neon-portrait.webp';
 
   const stats = [
-    { value: '50+', label: 'Projects Completed' },
+    { value: '20+', label: 'Projects Completed' },
     { value: '3+', label: 'Years Experience' },
-    { value: '20+', label: 'Happy Clients' },
+    { value: '10+', label: 'Happy Clients' },
     { value: '∞', label: 'Learning & Building' },
   ];
 
@@ -23,7 +22,7 @@ export const NeonHero: React.FC = () => {
     <section 
       id="neon-hero"
       aria-labelledby="hero-display-heading"
-      className="relative pt-28 sm:pt-36 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden"
+      className="relative pt-28 sm:pt-36 pb-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden bg-[radial-gradient(ellipse_at_12%_36%,rgba(183,243,43,0.16),transparent_38%),radial-gradient(ellipse_at_90%_85%,rgba(196,255,50,0.12),transparent_36%)]"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
         
@@ -34,7 +33,7 @@ export const NeonHero: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}
             className="flex items-center gap-2 mb-4"
           >
             <span className="w-2 h-2 rounded-full bg-[#B7F32B] shadow-[0_0_8px_#B7F32B]" />
@@ -48,7 +47,7 @@ export const NeonHero: React.FC = () => {
             id="hero-display-heading"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: shouldReduceMotion ? 0 : 0.1 }}
             className="font-display font-extrabold text-4xl sm:text-6xl lg:text-[72px] leading-[1.05] tracking-tight text-[#10110F] mb-6"
           >
             Hi, I’m<br />
@@ -61,7 +60,7 @@ export const NeonHero: React.FC = () => {
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: shouldReduceMotion ? 0 : 0.2 }}
             className="text-base sm:text-lg text-[#686B65] max-w-xl leading-relaxed mb-8"
           >
             I build modern web and mobile applications with clean design, powerful functionality and AI-driven solutions that solve real problems and create meaningful experiences.
@@ -71,7 +70,7 @@ export const NeonHero: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: shouldReduceMotion ? 0 : 0.3 }}
             className="flex flex-wrap items-center gap-3 sm:gap-4 mb-12 sm:mb-16"
           >
             <Link
@@ -97,8 +96,8 @@ export const NeonHero: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-6 border-t border-[#E6E8E1]"
+            transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: shouldReduceMotion ? 0 : 0.4 }}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-5 sm:gap-6 pt-6 border-t border-[#DDE3D4]"
           >
             {stats.map((stat, i) => (
               <div key={i} className="flex flex-col">
@@ -143,14 +142,14 @@ export const NeonHero: React.FC = () => {
           </motion.div>
 
           {/* Developer Portrait Image */}
-          <div className="relative z-10 w-[280px] h-[340px] sm:w-[340px] sm:h-[420px] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-b from-transparent to-[#10110F]/30 border-2 border-white/80">
+          <div className="relative z-10 w-[min(78vw,340px)] h-[min(98vw,420px)] sm:w-[340px] sm:h-[420px] rounded-[34px] overflow-hidden shadow-[0_28px_70px_-22px_rgba(16,17,15,0.35)] bg-white border-[5px] border-white ring-1 ring-[#DDE3D4]">
             <img 
               src={profileImg} 
               alt={fullName}
-              className="w-full h-full object-cover object-top filter contrast-[1.04]"
+              className="w-full h-full object-cover object-[52%_28%] filter contrast-[1.06] saturate-[1.03]"
               onError={(e) => {
-                // High-quality fallback portrait
-                e.currentTarget.src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80';
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = '/profile/profile.png';
               }}
             />
           </div>
@@ -159,8 +158,8 @@ export const NeonHero: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="absolute -bottom-6 sm:-bottom-8 -right-2 sm:-right-6 z-20 p-4 rounded-2xl bg-[#11130F] text-slate-100 border border-white/10 shadow-2xl max-w-[260px] sm:max-w-[280px] text-[11px] font-mono leading-relaxed"
+            transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: shouldReduceMotion ? 0 : 0.5 }}
+            className="absolute -bottom-6 sm:-bottom-8 -right-1 sm:-right-5 z-20 p-4 sm:p-5 rounded-[22px] bg-[#11130F] text-slate-100 border border-white/10 shadow-[0_24px_55px_-20px_rgba(0,0,0,0.65)] w-[min(78vw,280px)] sm:max-w-[290px] text-[10px] sm:text-[11px] font-mono leading-relaxed"
           >
             <div className="flex items-center gap-1.5 mb-2 pb-2 border-b border-white/10">
               <span className="w-2 h-2 rounded-full bg-[#B7F32B]" />
@@ -177,7 +176,7 @@ export const NeonHero: React.FC = () => {
           </motion.div>
 
           {/* Handwritten Signature */}
-          <div className="absolute bottom-2 left-0 sm:-left-6 z-20 pointer-events-none">
+          <div className="absolute bottom-1 left-0 sm:-left-6 z-20 pointer-events-none max-w-[48%]">
             <span className="font-handwriting text-lg sm:text-xl text-[#10110F] font-bold block transform -rotate-6">
               {fullName}<br />
               <span className="text-xs font-sans font-medium text-[#686B65]">Software Developer</span>
