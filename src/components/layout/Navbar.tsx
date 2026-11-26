@@ -70,7 +70,7 @@ export const Navbar: React.FC = () => {
         <Link 
           to="/"
           id="navbar-brand-logo"
-          className="flex items-center gap-2.5 sm:gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B7F32B] rounded-full"
+          className="flex items-center gap-2.5 sm:gap-3 group min-w-0 flex-1 md:flex-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B7F32B] rounded-full"
         >
           {isNeon ? (
             /* Theme 2: Black rounded logo container matching reference */
@@ -143,7 +143,7 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Right: Theme Switcher Button & Primary CTA */}
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           
           {/* 
             STRICT REQUIREMENT 1 & 2:
