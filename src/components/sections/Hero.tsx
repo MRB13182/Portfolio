@@ -83,7 +83,7 @@ export const Hero: React.FC = () => {
               <Link
                 to="/projects"
                 id="hero-view-work-cta"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-[13px] font-bold bg-[#171725] text-white hover:bg-[#252538] transition-all duration-200 shadow-md shadow-black/10 active:scale-95"
+                className="portfolio-interactive inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-[13px] font-bold bg-[#171725] text-white hover:bg-[#252538] transition-all duration-200 shadow-md shadow-black/10 active:scale-95"
               >
                 <span>View My Work</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -93,7 +93,7 @@ export const Hero: React.FC = () => {
               <Link
                 to="/contact"
                 id="hero-contact-cta"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-[13px] font-semibold border backdrop-blur-md transition-all duration-200 active:scale-95 border-slate-200/80 bg-white/80 hover:bg-white text-[#171725] hover:shadow-xs"
+                className="portfolio-interactive inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-[13px] font-semibold border backdrop-blur-md transition-all duration-200 active:scale-95 border-slate-200/80 bg-white/80 hover:bg-white text-[#171725] hover:shadow-xs"
               >
                 <span>Contact Me</span>
                 <ArrowUpRight className="w-4 h-4 opacity-70" />
