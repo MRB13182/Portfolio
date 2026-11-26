@@ -76,7 +76,7 @@ export const NeonHero: React.FC = () => {
             <Link
               to="/projects"
               id="neon-hero-explore-work-btn"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs sm:text-sm font-bold bg-[#B7F32B] text-[#10110F] hover:bg-[#C4FF32] transition duration-200 active:scale-95 shadow-[0_4px_16px_rgba(183,243,43,0.30)] hover:shadow-[0_6px_22px_rgba(183,243,43,0.45)]"
+              className="portfolio-interactive inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs sm:text-sm font-bold bg-[#B7F32B] text-[#10110F] hover:bg-[#C4FF32] transition duration-200 active:scale-95 shadow-[0_4px_16px_rgba(183,243,43,0.30)] hover:shadow-[0_6px_22px_rgba(183,243,43,0.45)]"
             >
               <span>Explore My Work</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -85,7 +85,7 @@ export const NeonHero: React.FC = () => {
             <Link
               to="/contact"
               id="neon-hero-contact-btn"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs sm:text-sm font-bold bg-white text-[#10110F] border border-[#E6E8E1] hover:border-[#10110F] transition duration-200 active:scale-95 shadow-xs"
+              className="portfolio-interactive inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-xs sm:text-sm font-bold bg-white text-[#10110F] border border-[#E6E8E1] hover:border-[#10110F] transition duration-200 active:scale-95 shadow-xs"
             >
               <span>Let's Talk</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -134,10 +134,10 @@ export const NeonHero: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: shouldReduceMotion ? 0 : 0.4 }}
             className="absolute top-2 sm:top-4 right-0 sm:-right-4 z-20 max-w-[88%] px-3.5 py-1.5 rounded-full bg-[#11130F] text-white text-[11px] font-semibold flex items-center gap-2 shadow-lg border border-white/10"
           >
-            <span className="w-2 h-2 rounded-full bg-[#B7F32B] animate-pulse" />
+            <span className={`w-2 h-2 rounded-full bg-[#B7F32B] ${shouldReduceMotion ? "" : "animate-pulse"}`} />
             <span>Turning Ideas Into Reality</span>
           </motion.div>
 
