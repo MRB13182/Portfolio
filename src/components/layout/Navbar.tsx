@@ -11,12 +11,13 @@ import {
   Sparkles,
   Zap
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 
 export const Navbar: React.FC = () => {
   const location = useLocation();
   const { portfolioTheme, isNeon, togglePortfolioTheme } = useTheme();
   const { profile } = usePortfolioData();
+  const shouldReduceMotion = useReducedMotion();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -128,7 +129,7 @@ export const Navbar: React.FC = () => {
                         ? 'bg-[#F7F8F5] border border-[#E6E8E1] shadow-xs'
                         : 'bg-white/90 border border-white/80 shadow-[0_2px_8px_rgba(0,0,0,0.04)]'
                     }`}
-                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 30, duration: shouldReduceMotion ? 0 : 0.25 }}
                   />
                 )}
                 <span className="relative z-10 flex items-center gap-1.5">
@@ -217,7 +218,7 @@ export const Navbar: React.FC = () => {
             initial={{ opacity: 0, y: -10, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.2 }}
             className={`pointer-events-auto absolute top-14 sm:top-16 inset-x-4 max-w-lg mx-auto rounded-3xl border p-4 backdrop-blur-2xl shadow-2xl ${
               isNeon
                 ? 'bg-white/98 border-[#E6E8E1] text-[#10110F]'
