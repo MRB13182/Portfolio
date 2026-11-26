@@ -771,3 +771,32 @@ html.low-power-mode .backdrop-blur {
   }
 }
 
+
+
+/* S7 interaction polish: hover effects stay on hover-capable pointers; touch gets a pressed state. */
+.portfolio-interactive {
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--motion-fast), filter var(--motion-fast), box-shadow var(--motion-standard);
+}
+@media (hover: hover) and (pointer: fine) {
+  .portfolio-interactive:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.025);
+  }
+}
+.portfolio-interactive:active {
+  transform: scale(0.98);
+}
+.portfolio-interactive:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-interactive,
+  .portfolio-interactive:hover,
+  .portfolio-interactive:active {
+    transform: none !important;
+    transition: none !important;
+    filter: none !important;
+  }
+}
